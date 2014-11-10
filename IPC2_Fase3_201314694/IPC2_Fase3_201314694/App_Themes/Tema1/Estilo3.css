@@ -1,0 +1,40 @@
+﻿body {
+    margin:0;
+    padding:0;
+    color: #808080;
+    font-size:12px;
+    line-height:12px;
+    font-family:'Adobe Gothic Std';
+    background-color:#fff;
+    background-position:center top;
+    background-repeat:no-repeat;
+}
+#h1 {
+    font-family:'Adobe Hebrew';
+}
+#General2 {
+    width:1250px;
+    margin:0 auto;
+}
+#Back3 {
+    background:url("/Imagenes/Fondo6.png");
+    height:200px;
+    width:1250px;
+    border-radius:0px 0px 20px 20px;
+    color:white;
+}
+#ColumnaIzq1 {
+float:left;
+width:200px;
+height:400px;
+overflow:scroll;
+text-align:center;
+margin-left:1px;   
+font-size:20px;
+}
+#ColumnaDer1 {
+float:right;
+width:1048px;
+margin-left:1px;
+overflow:hidden;
+}

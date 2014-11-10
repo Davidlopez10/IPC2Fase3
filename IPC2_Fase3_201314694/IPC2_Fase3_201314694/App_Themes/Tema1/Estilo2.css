@@ -1,0 +1,39 @@
+﻿body {
+     margin:0;
+    padding:0;
+    color: #808080;
+    font-size:12px;
+    line-height:12px;
+    font-family:'Adobe Gothic Std';
+    background-color:#fff;
+    background-position:center top;
+    background-repeat:no-repeat;
+}
+#General {
+    width:1200px;
+    margin:0 auto;
+}
+#h2 {
+text-align:center;
+}
+#Back {
+background-image: url("/Imagenes/Fondo2.jpg");
+height:200px;
+border-radius:0px 0px  10px 10px;
+box-shadow:0px 0px 10px #000 inset;
+}
+#colum_izquierda {
+float:left;
+width:198px;
+height:400px;
+text-align:center;
+margin-left:1px;
+overflow:hidden;
+font-size:20px;
+}
+#colum_derecha {
+    float:right;
+    width:998px;
+    height:400px;
+    margin-left:1px;
+}

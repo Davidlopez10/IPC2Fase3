@@ -1,0 +1,42 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Pago.master.cs" Inherits="IPC2_Fase3_201314694.Maestras.Pago" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div id="General5">
+        <div id="Back5">
+            <br />
+            <h1 style="margin-left:20px;">Productos Magnificos</h1>
+            <h2 style="margin-left:30px;">Pagos</h2>
+        </div>
+        <div id="ColumnIzq4">
+         <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+        
+        </asp:ContentPlaceHolder>
+        </div>
+        <div id="ColumnDer4">
+             <div style="width: 820px;">
+                    <div style="text-align: right; float: left; width: 600px">
+                        Nombre de usuario: <asp:Label ID="nombreUsuario" runat="server" Text=""></asp:Label>
+                    </div>
+                    <div style="float: left; text-align: right; width: 140px;">
+                        <asp:LinkButton ID="lkbtlogout" runat="server" OnClick="lkbtlogout_Click">Cerrar Session</asp:LinkButton>
+                    </div>
+                </div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+        </div>
+        
+    </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,43 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Gerente.master.cs" Inherits="IPC2_Fase3_201314694.Maestras.Gerente" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link href="../App_Themes/Tema1/Estilo2.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+
+    <div id="General">
+        <div id="Back">
+            <br />
+            <h1 style="text-align:left; color:#000; width:400px; margin-left:10px;">Productos Magnificos</h1> 
+            <h2 style="width:300px; color:#000; text-shadow:0 #000; margin-left:10px;">Gerente</h2>           
+        </div>
+        <div id="colum_izquierda">
+         <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+        <------codigo----->
+        </asp:ContentPlaceHolder>
+        </div>
+        <div id="colum_derecha">
+            <div style="width: 995px;">
+                    <div style="text-align: right; float: left; width: 820px">
+                        Nombre de usuario: <asp:Label ID="nombreUsuario" runat="server" Text=" "></asp:Label>
+                    </div>
+                    <div style="float: left; text-align: right; width: 150px;">
+                        <asp:LinkButton ID="lkbtlogout" runat="server" OnClick="lkbtlogout_Click">Cerrar Session</asp:LinkButton>
+                    </div>
+                </div>
+         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        <-----codigo----->
+        </asp:ContentPlaceHolder>
+        </div>       
+    </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,9 @@
+c:\users\david\documents\visual studio 2012\Projects\IPC2_Fase3_201314694\IPC2_Fase3_201314694\obj\Debug\IPC2_Fase3_201314694.csprojResolveAssemblyReference.cache
+c:\users\david\documents\visual studio 2012\Projects\IPC2_Fase3_201314694\IPC2_Fase3_201314694\bin\IPC2_Fase3_201314694.dll
+c:\users\david\documents\visual studio 2012\Projects\IPC2_Fase3_201314694\IPC2_Fase3_201314694\bin\IPC2_Fase3_201314694.pdb
+c:\users\david\documents\visual studio 2012\Projects\IPC2_Fase3_201314694\IPC2_Fase3_201314694\obj\Debug\IPC2_Fase3_201314694.dll
+c:\users\david\documents\visual studio 2012\Projects\IPC2_Fase3_201314694\IPC2_Fase3_201314694\obj\Debug\IPC2_Fase3_201314694.pdb
+C:\Users\David\Documents\Visual Studio 2012\Projects\IPC2_Fase3_201314694\IPC2_Fase3_201314694\bin\itextsharp.dll
+C:\Users\David\Documents\Visual Studio 2012\Projects\IPC2_Fase3_201314694\IPC2_Fase3_201314694\bin\itextsharp.pdfa.dll
+C:\Users\David\Documents\Visual Studio 2012\Projects\IPC2_Fase3_201314694\IPC2_Fase3_201314694\bin\itextsharp.xtra.dll
+C:\Users\David\Documents\Visual Studio 2012\Projects\IPC2_Fase3_201314694\IPC2_Fase3_201314694\bin\itextsharp.xml

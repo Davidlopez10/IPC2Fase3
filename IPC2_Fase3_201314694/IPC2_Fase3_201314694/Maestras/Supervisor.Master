@@ -1,0 +1,46 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Supervisor.master.cs" Inherits="IPC2_Fase3_201314694.Maestras.Supervisor" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link href="../App_Themes/Tema1/Estilo4.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div id="General1">
+        <div id="Back2">
+            <br />
+            <h1 style="margin-left:5px;">Productos Magnificos</h1>
+            <h2 style="margin-left:15px;">Supervisor</h2>
+        </div>
+        <div id="ColumnaIzq2">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+        <--codigo-->
+        </asp:ContentPlaceHolder>
+        </div>
+        <div id="ColumnaDer2">
+                 <div style="width: 820px;">
+                    <div style="text-align: right; float: left; width: 600px">
+                        Nombre de usuario: <asp:Label ID="nombreUsuario" runat="server" Text=""></asp:Label>
+                    </div>
+                    <div style="float: left; text-align: right; width: 140px;">
+                        <asp:LinkButton ID="lkbtlogout" runat="server" OnClick="lkbtlogout_Click">Cerrar Session</asp:LinkButton>
+                    </div>
+                </div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        <---codigo--->
+        </asp:ContentPlaceHolder>
+        </div>
+        <div id="Pie2">
+             <span style="margin-top:300px;">lopezlopez@hotmail.com 2014-Productos Magificos S.A.</span>
+             <p style="margin-left:15px;">&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
+        </div>      
+    </div>
+    </form>
+</body>
+</html>

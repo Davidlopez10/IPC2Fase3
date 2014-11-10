@@ -1,0 +1,42 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Anonimo.master.cs" Inherits="IPC2_Fase3_201314694.Maestras.Anonimo" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link href="../App_Themes/Tema1/Estilo1.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+
+        <div id="abrigo_general">
+            <div id="banner">
+                <br />
+                <h1 style="text-align:center;">Productos Magnificos</h1>
+                <h2 style="text-align:center;">Administrador</h2>
+            </div>           
+        <div id="contenido_izquierdo">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server"> 
+                <--encavezado codigo-->
+            </asp:ContentPlaceHolder>
+        </div>
+            <div id="contenido_derecho">
+                <div style="width: 740px;">
+                    <div style="text-align: right; float: left; width: 600px">
+                        Nombre de usuario: <asp:Label ID="nombreUsuario" runat="server" Text=""></asp:Label>
+                    </div>
+                    <div style="float: left; text-align: right; width: 140px;">
+                        <asp:LinkButton ID="lkbtlogout" runat="server" OnClick="lkbtlogout_Click">Cerrar Session</asp:LinkButton>
+                    </div>
+                </div>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

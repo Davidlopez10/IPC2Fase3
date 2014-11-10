@@ -1,0 +1,46 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Ventas.master.cs" Inherits="IPC2_Fase3_201314694.Maestras.Ventas" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link href="../App_Themes/Tema1/Estilo5.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <script language="JavaScript">
+        document.onkeydown=function (evt) {return (evt ? evt.which : event.keyCode) != 13;
+</script>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div id="Genral4">
+        <div id="Back4">
+            <br />
+          <h1 style="margin-left:10px;">Productos Magnificos</h1>
+            <h2 style="margin-left:20px;">Ventas</h2>  
+        </div>
+        <div id="ColumnaIzq3">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+        <--codigo-->
+        </asp:ContentPlaceHolder>
+        </div>
+        <div id="ColumnaDer3">
+            <div style="width:824px;">
+                    <div style="text-align: right; float: left; width: 600px">
+                        Nombre de usuario: <asp:Label ID="nombreUsuario" runat="server" Text=""></asp:Label>
+                    </div>
+                    <div style="float: left; text-align: right; width: 140px;">
+                        <asp:LinkButton ID="lkbtlogout" runat="server" OnClick="lkbtlogout_Click">Cerrar Session</asp:LinkButton>
+                    </div>
+                </div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        <---codigo--->
+        </asp:ContentPlaceHolder>
+        </div>
+        
+    </div>
+    </form>
+</body>
+</html>
