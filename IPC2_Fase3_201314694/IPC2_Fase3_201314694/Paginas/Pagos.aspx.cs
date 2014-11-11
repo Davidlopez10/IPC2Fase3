@@ -57,10 +57,19 @@ namespace IPC2_Fase3_201314694.Paginas
                 Button2.Visible = false;
                 Button3.Visible = false;
             }
-            else { 
-            
-            
-            }           
+            else {           
+            }
+            TextBox7.Text = "";
+            Label16.Text = "";
+            TextBox2.Text = "";
+            TextBox3.Text = "";
+            TextBox4.Text = "";
+            TextBox1.Text = "";
+            TextBox5.Text = "";
+            TextBox6.Text = "";
+
+
+
         }
 
         protected void LinkButton1_Click(object sender, EventArgs e)
@@ -251,6 +260,7 @@ namespace IPC2_Fase3_201314694.Paginas
         {
             MultiView1.ActiveViewIndex = 1;
             Label13.Text = DropDownList1.SelectedValue;
+            TextBox8.Text = "";
             Label17.Visible = false;
         }
 
@@ -275,6 +285,7 @@ namespace IPC2_Fase3_201314694.Paginas
         protected void Button3_Click(object sender, EventArgs e)
         {
             reporte.CrearFacturaPago(DropDownList1.SelectedValue);
+            Response.ContentType = "application/pdf";
             Response.AddHeader("content-disposition", "attachment; filename= Factura_" + DropDownList1.SelectedValue + ".pdf");
             System.Web.HttpContext.Current.Response.Write(reporte.retornarDocumento());
             Response.Flush();

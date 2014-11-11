@@ -7,3 +7,12 @@ C:\Users\David\Documents\Visual Studio 2012\Projects\IPC2_Fase3_201314694\IPC2_F
 C:\Users\David\Documents\Visual Studio 2012\Projects\IPC2_Fase3_201314694\IPC2_Fase3_201314694\bin\itextsharp.pdfa.dll
 C:\Users\David\Documents\Visual Studio 2012\Projects\IPC2_Fase3_201314694\IPC2_Fase3_201314694\bin\itextsharp.xtra.dll
 C:\Users\David\Documents\Visual Studio 2012\Projects\IPC2_Fase3_201314694\IPC2_Fase3_201314694\bin\itextsharp.xml
+C:\Users\David\Documents\GitHub\IPC2Fase3\IPC2_Fase3_201314694\IPC2_Fase3_201314694\bin\IPC2_Fase3_201314694.dll
+C:\Users\David\Documents\GitHub\IPC2Fase3\IPC2_Fase3_201314694\IPC2_Fase3_201314694\bin\IPC2_Fase3_201314694.pdb
+C:\Users\David\Documents\GitHub\IPC2Fase3\IPC2_Fase3_201314694\IPC2_Fase3_201314694\bin\itextsharp.dll
+C:\Users\David\Documents\GitHub\IPC2Fase3\IPC2_Fase3_201314694\IPC2_Fase3_201314694\bin\itextsharp.pdfa.dll
+C:\Users\David\Documents\GitHub\IPC2Fase3\IPC2_Fase3_201314694\IPC2_Fase3_201314694\bin\itextsharp.xtra.dll
+C:\Users\David\Documents\GitHub\IPC2Fase3\IPC2_Fase3_201314694\IPC2_Fase3_201314694\bin\itextsharp.xml
+C:\Users\David\Documents\GitHub\IPC2Fase3\IPC2_Fase3_201314694\IPC2_Fase3_201314694\obj\Debug\IPC2_Fase3_201314694.csprojResolveAssemblyReference.cache
+C:\Users\David\Documents\GitHub\IPC2Fase3\IPC2_Fase3_201314694\IPC2_Fase3_201314694\obj\Debug\IPC2_Fase3_201314694.dll
+C:\Users\David\Documents\GitHub\IPC2Fase3\IPC2_Fase3_201314694\IPC2_Fase3_201314694\obj\Debug\IPC2_Fase3_201314694.pdb

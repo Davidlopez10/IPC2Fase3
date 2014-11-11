@@ -480,6 +480,25 @@ namespace IPC2_Fase3_201314694
            }     
        }
 
+       public void BorrarOrden(string nOrden) {
+           using (SqlConnection conexion = new SqlConnection(cadenaconexion))
+           {
+               conexion.Open();
+               string consulta = "DELETE FROM ORDEN WHERE CODIGOORDEN='"+nOrden+"' AND TOTALPAGAR=0 AND ESTADOAPROBACION='Procesando';";
+               SqlCommand com = new SqlCommand(consulta, conexion);
+               try
+               {
+                   com.ExecuteScalar();
+                   conexion.Close();
+                  
+               }
+               catch (Exception e)
+               {
+                  
+               }
+           }           
+       }
+
        public string ActualizarClienteCredito(string NitCliente,string cantidadOrden,string limiteCredito) {
            string mensajeCliente = "";
            using (SqlConnection conexion = new SqlConnection(cadenaconexion))

@@ -82,19 +82,28 @@ namespace IPC2_Fase3_201314694.Paginas
             DropDownList1.Enabled = false;
             TextBox2.Enabled = false;
             TextBox1.Enabled = false;
+            Button11.Enabled = false;
+            DropDownList3.Enabled = false;
+            Button11.Enabled = false;
         }
         private void DesbloquearView1() {
             DropDownList1.Enabled = true;
-            TextBox2.Enabled = true;
+            TextBox2.Enabled = false;
             TextBox2.Text = "";
             //DropDownList1.SelectedIndex = 0;
             DropDownList3.Items.Clear();
             Label8.Text = "0";
             Label9.Text = "0";
             Label11.Text = "0";
-            TextBox1.Enabled = true;
+            TextBox1.Enabled = false;
             TextBox1.Text = "";
+            Button1.Enabled = false;
+            Button10.Enabled = false;
+            DropDownList2.Enabled = false;
             DropDownList2.Items.Clear();
+            DropDownList3.Enabled = false;
+            Button11.Enabled = false;
+            GridView1.Enabled = false;
             GridView1.DataBind();
         }
         protected void LinkButton1_Click(object sender, EventArgs e)
@@ -159,6 +168,7 @@ namespace IPC2_Fase3_201314694.Paginas
                             Label8.Text = Convert.ToString(Resultado).Replace(",", ".");
                             Button10.Enabled = true;
                             Label35.Visible = false;
+                            DropDownList2.Items.Remove(DropDownList2.Text);
                         }
                         else
                         {
@@ -166,6 +176,7 @@ namespace IPC2_Fase3_201314694.Paginas
                             //Response.Write("<script language='javascript'> { window.alert('Ya no tiene Credito') } </script> ");
                             Label35.Text = "No Suficiente Tiene Credito";
                             Label35.Visible = true;
+                            conexion.BorrarOrden(NoOrden);
                             conexion.BorrarFilaOrden(cantidad, Tproducto.CodigoProducto, NoOrden);
                             //Label8.Text = Convert.ToString(Resultado);
                             //GridView1.RowDeleted();
@@ -339,8 +350,18 @@ namespace IPC2_Fase3_201314694.Paginas
            }
            string numeroFilas = this.GridView1.Rows.Count.ToString();
            string limite=Label8.Text;
-           conexion.ActualizarClienteCredito(DropDownList1.SelectedValue,Convert.ToString(cantidadorden),limite);
-           DesbloquearView1();       
+           if (this.GridView1.Rows.Count > 0)
+           {
+                conexion.ActualizarClienteCredito(DropDownList1.SelectedValue,Convert.ToString(cantidadorden),limite);
+                DesbloquearView1();
+           }
+           else {
+               conexion.BorrarOrden(TextBox2.Text);
+               DesbloquearView1();
+               Label35.Text = "No Tiene Detalle de Orden";
+               Label35.Visible = true;
+           }
+                             
        }
 
        protected void Button4_Click(object sender, EventArgs e)
@@ -352,8 +373,8 @@ namespace IPC2_Fase3_201314694.Paginas
            }
            else {
                Label36.Visible = false;
-               Label31.Text = conexion.ActualizarOrdenCerrar(DropDownList6.SelectedValue, Label29.Text);
-               DropDownList6.ClearSelection();
+               Label31.Text = conexion.ActualizarOrdenCerrar(DropDownList6.SelectedValue, Label29.Text);              
+               DropDownList6.Items.Remove(DropDownList6.Text);
                Label14.Text = "";
                Label16.Text = "";           
            }          
@@ -382,8 +403,9 @@ namespace IPC2_Fase3_201314694.Paginas
                Label34.Text = DropDownList7.SelectedValue;
                Label33.Visible = true;
                Label34.Visible = true;
+               DropDownList7.Items.Remove(DropDownList7.Text);
            }
-           //DropDownList7.ClearSelection();
+           
        }
 
       protected void Button7_Click(object sender, EventArgs e)
@@ -413,6 +435,7 @@ namespace IPC2_Fase3_201314694.Paginas
           else {
               Label38.Visible = false;
               Label32.Text= conexion.ActualizarOrdenAnulada(DropDownList14.SelectedValue);
+              DropDownList14.Items.Remove(DropDownList14.Text);
           }
          
       }
@@ -467,6 +490,9 @@ namespace IPC2_Fase3_201314694.Paginas
                   //Response.Write("<script language='javascript'> { window.alert('No Orden Ya existe') } </script> ");
                   Label35.Text = "Numero de Orden Ya existe";
                   Label35.Visible = true;
+                  TextBox1.Enabled = false;
+                  DropDownList2.Enabled = false;
+                  Button1.Enabled = false;
                   DropDownList2.Items.Clear();
               }
               else
@@ -494,6 +520,7 @@ namespace IPC2_Fase3_201314694.Paginas
                       TextBox1.Enabled = true;
                       Button1.Enabled = true;
                       Label35.Visible = false;
+                      GridView1.Enabled = true;
                   }
                   else if (result1 == 0)
                   {//las fechas son iguales al inicio
@@ -506,6 +533,7 @@ namespace IPC2_Fase3_201314694.Paginas
                       TextBox1.Enabled = true;
                       Button1.Enabled = true;
                       Label35.Visible = false;
+                      GridView1.Enabled = true;
                   }
                   else if (result2 == 0)
                   {
@@ -519,6 +547,7 @@ namespace IPC2_Fase3_201314694.Paginas
                       TextBox1.Enabled = true;
                       Button1.Enabled = true;
                       Label35.Visible = false;
+                      GridView1.Enabled = true;
                   }
                   else if ((result1 > 0) && (result2 > 0))
                   {
