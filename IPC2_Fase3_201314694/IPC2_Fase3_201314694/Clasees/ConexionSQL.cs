@@ -409,13 +409,13 @@ namespace IPC2_Fase3_201314694
            return Productos;
        }
 
-       public Decimal TotalDetalleOrden(string NoOrden)
+       public Decimal TotalDetalleOrden(string NoOrden,string NitCliente)
        {
            decimal total = 0;
            using (SqlConnection cone = new SqlConnection(cadenaconexion))
            {
                cone.Open();
-               string cosulta = "SELECT VALOR,CANTIDAD FROM DETALLEPRODUCTOORDEN WHERE CODIGOORDEN='" + NoOrden + "'";
+               string cosulta = "SELECT VALOR,CANTIDAD FROM DETALLEPRODUCTOORDEN INNER JOIN ORDEN ON DETALLEPRODUCTOORDEN.CODIGOORDEN=ORDEN.CODIGOORDEN WHERE ORDEN.CODIGOORDEN='"+NoOrden+"' AND ORDEN.NITCLIENTE='"+NitCliente+"';";
                try
                {
                    SqlCommand comd = new SqlCommand(cosulta, cone);

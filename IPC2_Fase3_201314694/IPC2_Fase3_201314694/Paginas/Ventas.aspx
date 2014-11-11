@@ -67,7 +67,7 @@
 
                     </td>
                     <td>
-                        <asp:TextBox ID="TextBox2" runat="server" TextMode="Number"></asp:TextBox>
+                        <asp:TextBox ID="TextBox2" runat="server" TextMode="Number" AutoPostBack="true"></asp:TextBox>
                     </td>
                     <td>
 
@@ -149,7 +149,7 @@
                         <asp:DropDownList ID="DropDownList2" runat="server" Enabled="false"></asp:DropDownList>
                     </td>
                     <td>
-                        <asp:Button ID="Button1" runat="server" Text="AGREGAR AL CARRITO" Width="161px" OnClick="Button1_Click" Enabled="false"/><br />
+                        <asp:Button ID="Button1" runat="server" Text="AGREGAR AL CARRITO" Width="161px" OnClick="Button1_Click" Enabled="false" style="height: 26px"/><br />
                         <br />
                     </td>
                 </tr>

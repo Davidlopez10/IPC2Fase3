@@ -67,9 +67,7 @@ namespace IPC2_Fase3_201314694.Paginas
             TextBox1.Text = "";
             TextBox5.Text = "";
             TextBox6.Text = "";
-
-
-
+            Label14.Visible = false;
         }
 
         protected void LinkButton1_Click(object sender, EventArgs e)
@@ -278,7 +276,8 @@ namespace IPC2_Fase3_201314694.Paginas
                 Response.AddHeader("content-disposition", "attachment; filename= ReciboCDPago_" +TextBox7.Text + ".pdf");
                 System.Web.HttpContext.Current.Response.Write(reporte.retornarDocumento());
                 Response.Flush();
-                Response.End();           
+                Response.End();
+                MultiView1.ActiveViewIndex = 0;
             }          
         }
 

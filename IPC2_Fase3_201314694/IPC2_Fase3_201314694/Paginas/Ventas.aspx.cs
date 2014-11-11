@@ -104,6 +104,7 @@ namespace IPC2_Fase3_201314694.Paginas
             DropDownList3.Enabled = false;
             Button11.Enabled = false;
             GridView1.Enabled = false;
+            Label35.Visible = false;
             GridView1.DataBind();
         }
         protected void LinkButton1_Click(object sender, EventArgs e)
@@ -153,7 +154,7 @@ namespace IPC2_Fase3_201314694.Paginas
                         datos = "'" + DropDownList2.SelectedValue + "'," + cantidad + ",'" + NoOrden + "','" + Tproducto.CodigoProducto + "'," + Tproducto.Precio.Replace(",", ".") + "";
                         conexion.Insertar(tabla, datos);
 
-                        decimal total = conexion.TotalDetalleOrden(TextBox2.Text);
+                        decimal total = conexion.TotalDetalleOrden(TextBox2.Text,CLIENTE.Nit);
                         Decimal Resultado = credito - total;
 
                         if (Resultado > 0)
@@ -195,7 +196,8 @@ namespace IPC2_Fase3_201314694.Paginas
         protected void LinkButton2_Click(object sender, EventArgs e)
         {
             MultiView1.ActiveViewIndex = 1;
-            
+            Button4.Enabled = false;
+            Label36.Visible = false;
             if (usuario.Puesto.Equals("Vendedor")) {
                 LinkedList<string> ordenes = conexion.OrdenCerrarEmpleado(usuario.Nit);//listas del propio empleado
                     DropDownList6.Items.Clear();
@@ -229,6 +231,11 @@ namespace IPC2_Fase3_201314694.Paginas
             MultiView1.ActiveViewIndex = 2;
             Label22.Text = usuario.Nombre;
             Label24.Text = usuario.Puesto;
+            Button6.Enabled = false;
+            Button7.Visible = false;
+            Label33.Visible = false;
+            Label34.Visible = false;
+            Label37.Visible = false;
             if (usuario.Puesto.Equals("Supervisor")) {
                 LinkedList<string> listaorden = conexion.OrdenAprobarSupervisor(usuario.Nit);
                 DropDownList7.Items.Clear();
@@ -247,9 +254,9 @@ namespace IPC2_Fase3_201314694.Paginas
         }
 
         protected void LinkButton4_Click(object sender, EventArgs e)
-        {
-            
+        {            
             MultiView1.ActiveViewIndex = 3;
+            Label38.Visible = false;
             if (usuario.Puesto.Equals("Gerente")) {
                 LinkedList<string> Anulacion = conexion.AnularOrdenGerente();
                 DropDownList14.Items.Clear();
@@ -306,22 +313,28 @@ namespace IPC2_Fase3_201314694.Paginas
         {
             if (TextBox2.Text.Equals(""))
             {
-               // Label8.Text = "0";
+               
             }
             else
             {
                 int filas = GridView1.Rows.Count;
-
-                decimal total = conexion.TotalDetalleOrden(TextBox2.Text);
-                string totalTex = Convert.ToString(total);
-                Label11.Text = totalTex;
-                conexion.ActualizarOrden(TextBox2.Text, totalTex);//me actualiza el total y el saldo que se tiene, esto en la base de datos
                 DatosCliente CLIENTE = conexion.ConsultaDatosCliente(DropDownList1.SelectedValue);
-                try
-                {
+                decimal total = conexion.TotalDetalleOrden(TextBox2.Text,CLIENTE.Nit);               
+                try{
                     decimal credito = Convert.ToDecimal(CLIENTE.LimiteCredito1);
                     decimal Resultado = credito - total;
-                    Label8.Text = Convert.ToString(Resultado).Replace(",",".");
+                    if (Resultado > 0)
+                    {
+                        Label35.Visible = false;
+                        string totalTex = Convert.ToString(total);
+                        Label11.Text = totalTex;
+                        conexion.ActualizarOrden(TextBox2.Text, totalTex);//me actualiza el total y el saldo que se tiene, esto en la base de datos
+                        Label8.Text = Convert.ToString(Resultado).Replace(",",".");
+                    }
+                    else {
+                        Label35.Text = "No Tiene suficiente Credito";
+                        Label35.Visible = true;
+                    }                 
                 }
                 catch (Exception ex)
                 {
