@@ -54,7 +54,7 @@
         <asp:Button ID="Button2" runat="server" Text="EMITIR RECIBO" OnClick="Button2_Click" Visible="false"/>
         <asp:Button ID="Button3" runat="server" Text="EMITIR FACTURA" OnClick="Button3_Click" Visible="false" />
     </p>
-            <p>
+            <p style="text-align:center;">
                 <asp:Label ID="Label4" runat="server" ForeColor="Red" Font-Bold="True" Font-Italic="False" Font-Names="Bell MT" Font-Size="30px"></asp:Label>
             </p>
         </asp:View>

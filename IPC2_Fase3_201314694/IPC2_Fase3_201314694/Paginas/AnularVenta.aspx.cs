@@ -42,8 +42,11 @@ namespace IPC2_Fase3_201314694.Paginas
                 foreach (string x in ordens)
                 {
                     DropDownList1.Items.Add(x);
-                }            
-            }
+                }
+            } 
+            Button2.Visible = false;
+            Button3.Visible = false;
+            Label4.Visible = false;
             MultiView1.ActiveViewIndex = 0;
         }
 
