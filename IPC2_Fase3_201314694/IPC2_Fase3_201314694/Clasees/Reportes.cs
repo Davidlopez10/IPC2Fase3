@@ -341,18 +341,22 @@ namespace IPC2_Fase3_201314694
                 Pdf += "<h4>NOMBRE:</b>" + usuario.Nombre+ "</h4><br/>";
                 Pdf += "<h4>PUESTO:</b>" + usuario.Puesto + "</h4><br/>";
                 Pdf += "<h4>No Orden:</b>" + d + "</h4><br/>";
-                //obtengo el detalle de orden
-                Pdf += "<TABLE BORDER='0.1'>";
-                Pdf += "<TR><TD> <b>Nombre Producto</b> </TD> <TD> <b>Cantidad</b> </TD> <TD> <b>Precio Unitario($)</b></TD> <TD><b> Precio Total($)</b></TD> </TR>";
-                //DETALLE DE PRODUCTOS EN LA ORDEN
+                
                 LinkedList<Productos> detalle = conexion.DetalleOrden(d);
-                foreach(Productos xx in detalle){
-                 Pdf += "<TR><TD>"+xx.Nombre+"</TD><TD>"+xx.Cantidad1+"</TD><TD>"+xx.Precio+"</TD><TD>"+xx.PrecioTotal1+"</TD></TR>";
-                 sumas += Convert.ToDecimal(xx.PrecioTotal1);
-               }
-                 Pdf += "</TABLE><br/>";
-                 Pdf += "<h4>Total($) :</b>" + sumas + "</h4><br/><br/><br/>";
-                 sumas = 0;
+                if (detalle.Count > 0) {
+                    //obtengo el detalle de orden
+                    Pdf += "<TABLE BORDER='0.1'>";
+                    Pdf += "<TR><TD> <b>Nombre Producto</b> </TD> <TD> <b>Cantidad</b> </TD> <TD> <b>Precio Unitario($)</b></TD> <TD><b> Precio Total($)</b></TD> </TR>";
+                    //DETALLE DE PRODUCTOS EN LA ORDEN
+                    foreach (Productos xx in detalle)
+                    {
+                        Pdf += "<TR><TD>" + xx.Nombre + "</TD><TD>" + xx.Cantidad1 + "</TD><TD>" + xx.Precio + "</TD><TD>" + xx.PrecioTotal1 + "</TD></TR>";
+                        sumas += Convert.ToDecimal(xx.PrecioTotal1);
+                    }
+                    Pdf += "</TABLE><br/>";
+                    Pdf += "<h4>Total($) :</b>" + sumas + "</h4><br/><br/><br/>";
+                    sumas = 0;                
+                }              
             }
             RealizarPdf(Pdf);
         }
@@ -369,20 +373,24 @@ namespace IPC2_Fase3_201314694
             decimal totales = 0;
             decimal Cantidad = 0;
             foreach(string a in codigoProducto){
-                Pdf += "<TABLE BORDER='0.1'>";
-                Pdf += "<TR><TD> <b>Codigo Orden</b> </TD> <TD> <b>Cantidad</b> </TD> <TD> <b>Precio Unitario($)</b></TD> <TD><b> Precio Total($)</b></TD> </TR>";
            
                 LinkedList<Productos> detalle = conexion.DetalleVentasProducto(a);
-                foreach(Productos p in detalle){
-                    Pdf += "<TR><TD>" + p.CodigoOrden1 + "</TD><TD>" + p.Cantidad1 + "</TD><TD>" + p.Precio + "</TD><TD>" + p.PrecioTotal1 + "</TD></TR>";
-                    totales  =totales  + Convert.ToDecimal(p.PrecioTotal1);
-                    Cantidad=Cantidad+Convert.ToDecimal(p.Cantidad1);
-                }
-                Pdf += "</TABLE><br/>";
-                Pdf += "<h4>TOTAL:</b>" +totales+ "</h4><br/>";
-                Pdf += "<h4>CANTIDAD TOTAL:</b>" +Cantidad+ "</h4><br/><br/>";
-                totales = 0;
-                Cantidad = 0;
+                if (detalle.Count > 0) {
+                    Pdf += "<h2>Codigo Producto:</b>"+a+"</h2><br/>";
+                    Pdf += "<TABLE BORDER='0.1'>";
+                    Pdf += "<TR><TD> <b>Codigo Orden</b> </TD> <TD> <b>Cantidad</b> </TD> <TD> <b>Precio Unitario($)</b></TD> <TD><b> Precio Total($)</b></TD> </TR>";
+                    foreach (Productos p in detalle)
+                    {
+                        Pdf += "<TR><TD>" + p.CodigoOrden1 + "</TD><TD>" + p.Cantidad1 + "</TD><TD>" + p.Precio + "</TD><TD>" + p.PrecioTotal1 + "</TD></TR>";
+                        totales = totales + Convert.ToDecimal(p.PrecioTotal1);
+                        Cantidad = Cantidad + Convert.ToDecimal(p.Cantidad1);
+                    }
+                    Pdf += "</TABLE><br/>";
+                    Pdf += "<h4>TOTAL:</b>" + totales + "</h4><br/>";
+                    Pdf += "<h4>CANTIDAD TOTAL:</b>" + Cantidad + "</h4><br/><br/>";
+                    totales = 0;
+                    Cantidad = 0;
+                }               
             }
 
             RealizarPdf(Pdf);
@@ -395,16 +403,14 @@ namespace IPC2_Fase3_201314694
             Pdf += "<h1> REPORTE VENTA X PRODUCTO: </h1><br/>";
             Pdf += "<FONT FACE= " + comilla + "courier new" + comilla + "SIZE=4 COLOR=" + comilla + "Black" + comilla + "><p> <b> </b></p><br/>";
             Pdf += "<h4>FECHA :</b>" + today.ToString("dd/MM/yy") + "</h4><br/>";
-            Pdf += "<h2>DETALLE DE CATEGORIAS</b></h2><br/>";
-            
+            Pdf += "<h2>DETALLE DE CATEGORIAS</b></h2><br/>";            
             //taba de detalles
             decimal cantidad = 0;
             String ordens = "";
             decimal promedio=0;
-            
-
             foreach (string d in categorias) {
-                LinkedList<Productos> productos = conexion.DetalleVentasCategoria(d); 
+                LinkedList<Productos> productos = conexion.DetalleVentasCategoria(d);
+                Pdf += "<h3>Codigo de Categoria:</b>"+d+"</h3><br/>";
                 Pdf += "<TABLE BORDER='0.1'>";
                 Pdf += "<TR><TD> <b>Producto</b></TD> <TD> <b>Cantidad </b> </TD> <TD><b>Total($) </b></TD></TR>";
                 foreach (Productos h in productos) {

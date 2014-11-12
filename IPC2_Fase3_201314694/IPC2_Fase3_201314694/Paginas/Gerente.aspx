@@ -28,10 +28,7 @@
                     <tr>
                         <td>
                             <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="NitClientes" DataTextField="NITCLIENTE" DataValueField="NITCLIENTE"></asp:DropDownList>
-                            <asp:SqlDataSource ID="NitClientes" runat="server" ConnectionString="<%$ ConnectionStrings:NuevaFase3 %>" SelectCommand="SELECT [NITCLIENTE] FROM [CLIENTE] WHERE ([CANTIDADORDENES] &gt; @CANTIDADORDENES)">
-                                <SelectParameters>
-                                    <asp:Parameter DefaultValue="0" Name="CANTIDADORDENES" Type="Int32" />
-                                </SelectParameters>
+                            <asp:SqlDataSource ID="NitClientes" runat="server" ConnectionString="<%$ ConnectionStrings:NuevaFase3 %>" SelectCommand="SELECT DISTINCT CLIENTE.NITCLIENTE FROM CLIENTE INNER JOIN ORDEN ON ORDEN.NITCLIENTE = CLIENTE.NITCLIENTE WHERE (CLIENTE.CANTIDADORDENES &gt; 0) AND (ORDEN.TOTALPAGAR &gt; 0)">
                             </asp:SqlDataSource>
                         </td>
                         <td>

@@ -1310,8 +1310,7 @@ namespace IPC2_Fase3_201314694
         }
 
         public LinkedList<Productos> DetalleOrden(string NoOrden) {
-            LinkedList<Productos> detalleproductos = new LinkedList<Productos> ();
-            Productos product = new Productos();
+            LinkedList<Productos> detalleproductos = new LinkedList<Productos> ();            
             using (SqlConnection con = new SqlConnection(cadenaconexion))
             {
                 con.Open();
@@ -1321,7 +1320,8 @@ namespace IPC2_Fase3_201314694
                 try
                 {
                     while (leer.Read())
-                    {
+                    {   
+                        Productos product = new Productos();
                         product.CodigoProducto = leer.GetValue(0).ToString();
                         product.Nombre = leer.GetValue(1).ToString();
                         product.Precio = leer.GetValue(2).ToString();
@@ -1432,7 +1432,7 @@ namespace IPC2_Fase3_201314694
 
         public LinkedList<Productos> DetalleVentasProducto(string CodigoProducto) {
             LinkedList<Productos> detalleproductos = new LinkedList<Productos> { };
-            Productos product = new Productos();
+            
             using (SqlConnection con = new SqlConnection(cadenaconexion))
             {
                 con.Open();
@@ -1442,7 +1442,8 @@ namespace IPC2_Fase3_201314694
                 try
                 {
                     while (leer.Read())
-                    {
+                    {   
+                        Productos product = new Productos();
                         product.CodigoOrden1 = leer.GetValue(0).ToString();
                         product.Nombre = leer.GetValue(1).ToString();
                         product.Precio = leer.GetValue(2).ToString();
@@ -1494,8 +1495,7 @@ namespace IPC2_Fase3_201314694
         }
 
         public LinkedList<Productos> DetalleVentasCategoria(string CodigoCategoria) {
-            LinkedList<Productos> detalleproductos = new LinkedList<Productos> { };
-            Productos product = new Productos();
+            LinkedList<Productos> detalleproductos = new LinkedList<Productos> { };           
             using (SqlConnection con = new SqlConnection(cadenaconexion))
             {
                 con.Open();
@@ -1506,6 +1506,7 @@ namespace IPC2_Fase3_201314694
                 {
                     while (leer.Read())
                     {
+                        Productos product = new Productos();
                         product.Nombre = leer.GetValue(0).ToString();
                         product.CodigoOrden1 = leer.GetValue(1).ToString();
                         product.Precio = leer.GetValue(2).ToString();
@@ -1589,7 +1590,7 @@ namespace IPC2_Fase3_201314694
 
         public LinkedList<PagoOrden> NumeroPagosOrden(string NoOrden) {
             LinkedList<PagoOrden> pago = new LinkedList<PagoOrden>();
-            PagoOrden pag = new PagoOrden();
+            
             string consulta = "SELECT ORDEN.CODIGOORDEN, PAGO.TIPOMONEDA, MONEDA.VALOR , PAGO.VALORPAGO FROM PAGO INNER JOIN MONEDA ON PAGO.TIPOMONEDA=MONEDA.NOMBRE INNER JOIN ORDEN ON PAGO.NOORDEN=ORDEN.CODIGOORDEN WHERE ORDEN.CODIGOORDEN='"+NoOrden+"';";
             using (SqlConnection conexion = new SqlConnection(cadenaconexion))
             {
@@ -1599,7 +1600,8 @@ namespace IPC2_Fase3_201314694
                 {
                     SqlDataReader read = cmd.ExecuteReader();
                     while (read.Read())
-                    {
+                    {   
+                        PagoOrden pag = new PagoOrden();
                         pag.NoOrden1=read.GetValue(0).ToString();
                         pag.MonedaPago1 = read.GetValue(1).ToString();
                         pag.Monedavalor1 = read.GetValue(2).ToString();
