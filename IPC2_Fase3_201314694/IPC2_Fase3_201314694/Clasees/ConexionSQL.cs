@@ -1344,12 +1344,12 @@ namespace IPC2_Fase3_201314694
             return detalleproductos;      
         } 
         /**Reporte empleados meta***/
-        public string TotalOrdenesCerradas(string nitEmpledo) {
+        public string TotalOrdenesCerradas(string nitEmpledo,string fecha) {
             string numerototal = "";            
             using (SqlConnection con = new SqlConnection(cadenaconexion))
             {
                 con.Open();
-                string consulta = "select COUNT(ESTADOAPROBACION) from ORDEN where ESTADOAPROBACION='Cerrada' and ORDEN.NITEMPLEADOVENDE='" + nitEmpledo + "';";
+                string consulta = "select COUNT(ESTADOAPROBACION) from ORDEN where ESTADOAPROBACION in('Cerrada','Aprobado') and ORDEN.NITEMPLEADOVENDE='"+nitEmpledo+"' and  (CONVERT(date,ORDEN.FECHACERRADA,103) BETWEEN CONVERT(date,'1/"+fecha+"',103) AND CONVERT(date,'30/"+fecha+"',103));";
                 SqlCommand com = new SqlCommand(consulta, con);
                 try
                 {
@@ -1372,20 +1372,48 @@ namespace IPC2_Fase3_201314694
             return numerototal;      
         }
 
-        public decimal TotalMetaEmpleadoVendedor(string fecha, string nitempleado)
-        {
-            decimal total = 0;
+        public string TotalOrdenesPagadas(string nitusuario,string fecha) {
+            string numerototal = "";
             using (SqlConnection con = new SqlConnection(cadenaconexion))
             {
                 con.Open();
-                string consulta = "select VENTAMETA from DETALLEMETA inner join METAS on detallemeta.codigometa=METAS.IDMETA where METAS.FECHA<='" + fecha + "' and METAS.CODIGOEMPELADO='" + nitempleado + "';";
+                string consulta = "select COUNT(CODIGOORDEN) from ORDEN where ESTADOAPROBACION in('Cerrada','Aprobado') and ORDEN.PAGOABONO='Pagando' and ORDEN.NITEMPLEADOVENDE='" + nitusuario + "' and  (CONVERT(date,ORDEN.FECHACERRADA,103) BETWEEN CONVERT(date,'1/" + fecha + "',103) AND CONVERT(date,'30/" + fecha + "',103));";
                 SqlCommand com = new SqlCommand(consulta, con);
                 try
                 {
                     SqlDataReader leer = com.ExecuteReader();
                     while (leer.Read())
                     {
-                        total += Convert.ToDecimal(leer.GetValue(0).ToString());
+                        numerototal = leer.GetValue(0).ToString();
+                    }
+                    leer.Close();
+                }
+                catch (Exception ex)
+                {
+                    //error
+                }
+                finally
+                {
+                    con.Close();
+                }
+            }
+            return numerototal;              
+        }
+
+        public decimal TotalMetaEmpleadoVendedor(string fecha, string nitempleado)
+        {
+            decimal total = 0;
+            using (SqlConnection con = new SqlConnection(cadenaconexion))
+            {
+                con.Open();
+                string consulta = "select SUM(VENTAMETA) from DETALLEMETA inner join METAS on detallemeta.codigometa=METAS.IDMETA where (CONVERT(date,METAS.FECHA,103) BETWEEN CONVERT(date,'1/"+fecha+"',103) AND CONVERT(date,'30/"+fecha+"',103)) and METAS.CODIGOEMPELADO='"+nitempleado+"';";
+                SqlCommand com = new SqlCommand(consulta, con);
+                try
+                {
+                    SqlDataReader leer = com.ExecuteReader();
+                    while (leer.Read())
+                    {
+                        total = Convert.ToDecimal(leer.GetValue(0).ToString());
                     }
                     leer.Close();
                 }

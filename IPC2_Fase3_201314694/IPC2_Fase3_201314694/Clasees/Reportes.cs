@@ -88,11 +88,12 @@ namespace IPC2_Fase3_201314694
             RealizarPdf(CodigoPDF);      
         }
         /**************Reporte venta vs meta(Vendedor)********************/
-        public void CrearReporteVentaMetaVendedor(UsuarioEmpleado usr) {
+        public void CrearReporteVentaMetaVendedor(UsuarioEmpleado usr,string mes) {
             String Pdf = "";
-            string mes = today.ToString("dd/MM/yyyy");
-            decimal total = conexion.TotalMetaEmpleadoVendedor( mes,usr.Nit);
-            string ordcerrada = conexion.TotalOrdenesCerradas(usr.Nit);
+            string anio = today.ToString("yyyy");
+            decimal total = conexion.TotalMetaEmpleadoVendedor(mes+"/"+anio,usr.Nit);//meta del mes del vendedor
+            string ordcerrada = conexion.TotalOrdenesCerradas(usr.Nit,mes+"/"+anio);//cantidad de ordenes cerradas durante el mes
+            string OrdenesPagadas = conexion.TotalOrdenesPagadas(usr.Nit,mes+"/"+anio);//cantidad de ordens pagadas durente el mes
             const string comilla = "\"";
             Pdf += "<h1> REPORTE VENTA -META: </h1><br/>";
             Pdf += "<FONT FACE= " + comilla + "courier new" + comilla + "SIZE=4 COLOR=" + comilla + "Black" + comilla + "><p> <b>  NIT VENDEDOR:  </b>" + usr.Nit + "</p><p> <b> MES A REPORTAR:  </b>" +mes + "</p><br/>";
@@ -103,85 +104,38 @@ namespace IPC2_Fase3_201314694
             //FECHAS 
             Pdf += "<h3><b>FECHA </b></h3></br>";           
             Pdf += "<h4><b>FECHA Y HORA: </b>" + today.ToString() + "</h4></br>";
-            Pdf += "<h4><b>META DEL MES: </b>" +Convert.ToString( total).Replace(",",".")+ "</h4></br>";
+            Pdf += "<h4><b>META DEL MES: </b>" +Convert.ToString(total).Replace(",",".")+ "</h4></br>";
             Pdf += "<h4><b>ORDENES CERRADA: </b>" + ordcerrada + "</h4></br>";
-            Pdf += "<h4><b>ORDENES PAGADAS: </b>" + 0 + "</h4></br>";
-            Pdf += "<h4><b>PORCENTAJES CUMPLIDOS: </b>" +0 + "</h4></br>";
+            Pdf += "<h4><b>ORDENES PAGADAS: </b>" + OrdenesPagadas + "</h4></br>";
+            decimal porcentaje = (total / Convert.ToDecimal(OrdenesPagadas)) * 100;
+            porcentaje = decimal.Round(porcentaje, 4);
+            Pdf += "<h4><b>PORCENTAJES CUMPLIDOS: </b>" +porcentaje+ "</h4></br>";
             Pdf += "<h6> <i>PRODUCTOS MAGNIFICOS </i> </h6></br>";
             RealizarPdf(Pdf);
         }
-        /*para gerente Rerpote Venta*/
-        public void CrearReporteVentaMetaGerente(UsuarioEmpleado usr, string mes)
-        {
-            String Pdf = "";
-            decimal total = conexion.TotalMetaEmpleadoVendedor(mes, usr.Nit);
-            string ordcerrada = conexion.TotalOrdenesCerradas(usr.Nit);
+
+        public void CrearReporteVenta_MetaXCategoria(UsuarioEmpleado user,string mes) {
+            LinkedList<string> categorias = conexion.CodigosCategorias();
+            string Pdf = "";
             const string comilla = "\"";
             Pdf += "<h1> REPORTE VENTA -META: </h1><br/>";
             Pdf += "<FONT FACE= " + comilla + "courier new" + comilla + "SIZE=4 COLOR=" + comilla + "Black" + comilla + "><p> <b>  NIT VENDEDOR:  </b>" + usr.Nit + "</p><p> <b> MES A REPORTAR:  </b>" + mes + "</p><br/>";
             //DATOS GENERALES DE EMPLEADO
             Pdf += "<h3><b>DATOS DE EMPLEADO:</b> </h3></br/>";
-            Pdf += "<h4><b>NIT DE EMPLEADO: </b>" + usr.Nit + "</h4></br>";
-            Pdf += "<h4><b>NOMBRE DE EMPLEADO: </b>" + usr.Nombre + "</h4></br>";
-            //FECHAS 
+            Pdf += "<h4><b>NIT DE EMPLEADO: </b>" + user.Nit + "</h4></br>";
+            Pdf += "<h4><b>NOMBRE DE EMPLEADO: </b>" + user.Nombre + "</h4></br>";
+            //fecha que se reporta
             Pdf += "<h3><b>FECHA </b></h3></br>";
-            //DateTime today = DateTime.Today;
-            Pdf += "<h4><b>FECHA Y HORA: </b>" + today + "</h4></br>";
-            Pdf += "<h4><b>META DEL MES: </b>" + Convert.ToString(total).Replace(",", ".") + "</h4></br>";
-            Pdf += "<h4><b>ORDENES CERRADA: </b>" + ordcerrada + "</h4></br>";
-            Pdf += "<h4><b>ORDENES PAGADAS: </b>" + 0 + "</h4></br>";
-            Pdf += "<h4><b>PORCENTAJES CUMPLIDOS: </b>" + 0 + "</h4></br>";
-            Pdf += "<h6> <i>PRODUCTOS MAGNIFICOS </i> </h6></br>";
-            RealizarPdf(Pdf);
-        }
-        /*Reporte supervisor*/
-        public void CrearReporteVentaMetaSupervisor(UsuarioEmpleado usr, string mes)
-        {
-            String Pdf = "";
-            decimal total = conexion.TotalMetaEmpleadoVendedor(mes, usr.Nit);
-            string ordcerrada = conexion.TotalOrdenesCerradas(usr.Nit);
-            const string comilla = "\"";
-            Pdf += "<h1> REPORTE VENTA -META: </h1><br/>";
-            Pdf += "<FONT FACE= " + comilla + "courier new" + comilla + "SIZE=4 COLOR=" + comilla + "Black" + comilla + "><p> <b>  NIT VENDEDOR:  </b>" + usr.Nit + "</p><p> <b> MES A REPORTAR:  </b>" + mes + "</p><br/>";
-            //DATOS GENERALES DE EMPLEADO
-            Pdf += "<h3><b>DATOS DE EMPLEADO:</b> </h3></br/>";
-            Pdf += "<h4><b>NIT DE EMPLEADO: </b>" + usr.Nit + "</h4></br>";
-            Pdf += "<h4><b>NOMBRE DE EMPLEADO: </b>" + usr.Nombre + "</h4></br>";
-            //FECHAS 
-            Pdf += "<h3><b>FECHA </b></h3></br>";
-           // DateTime today = DateTime.Today;
-            Pdf += "<h4><b>FECHA Y HORA: </b>" + today + "</h4></br>";
-            Pdf += "<h4><b>META DEL MES: </b>" + Convert.ToString(total).Replace(",", ".") + "</h4></br>";
-            Pdf += "<h4><b>ORDENES CERRADA: </b>" + ordcerrada + "</h4></br>";
-            Pdf += "<h4><b>ORDENES PAGADAS: </b>" + 0 + "</h4></br>";
-            Pdf += "<h4><b>PORCENTAJES CUMPLIDOS: </b>" + 0 + "</h4></br>";
-            Pdf += "<h6> <i>PRODUCTOS MAGNIFICOS </i> </h6></br>";
-            RealizarPdf(Pdf);
-        }
-        /*Reporte ventas vs Categoria*/
-        public void CrearReporteVentasMetaCategoria(UsuarioEmpleado usario,string mes) {
-            String Pdf = "";
-            const string comilla = "\"";
-            Pdf += "<h1> REPORTE Meta X Categoria : </h1><br/>";
-            Pdf += "<FONT FACE= " + comilla + "courier new" + comilla + "SIZE=4 COLOR=" + comilla + "Black" + comilla + "><p> <b>  NIT VENDEDOR:  </b>" + usario.Nit + "</p><p> <b> MES A REPORTAR:  </b>" + mes + "</p><br/>";
-            Pdf += "<h3><b>DATOS DE EMPLEADO:</b> </h3></br/>";
-            Pdf += "<h4><b>NIT DE EMPLEADO: </b>" + usario.Nit + "</h4></br>";
-            Pdf += "<h4><b>NOMBRE DE EMPLEADO: </b>" + usario.Nombre + "</h4></br>";
-            //fecha a reportar
-            Pdf += "<h3><b>FECHA </b></h3></br>";
-          
-            Pdf += "<h4><b>MES A REPORTAR </b>" + today.ToString("MM") +"</h4></br>";
-            Pdf += "<h4><b>FECHA Y HORA: </b>" + today + "</h4></br>";
-            //caegoria
-            Pdf += "<h4><b>NOMBRE DE CATEGORIA: </b>" + today + "</h4></br>";
-            Pdf += "<h4><b>CODIGO DE LA META DEL MES: </b>" + today + "</h4></br>";
-            Pdf += "<h4><b>ORDENES CERRADAS: </b>" + today + "</h4></br>";
-            Pdf += "<h4><b>ORDENES PAGADAS MES: </b>" + today + "</h4></br>";
-            Pdf += "<h4><b>ORDENES A PAGAR: </b>" + today + "</h4></br>";
-            Pdf += "<h4><b>PORCENTAJE CUMPLIDO: </b>" + today + "</h4></br>";
+            Pdf += "<h4><b>FECHA Y HORA: </b>" + today.ToString() + "</h4></br>";
 
 
+        
+        
+        
+        
         }
+        
+       
 
         /***********************************Usado Por pagos*****************************************/
         public void CrearReciboPago(string noOrden,string codigoRecibo) {

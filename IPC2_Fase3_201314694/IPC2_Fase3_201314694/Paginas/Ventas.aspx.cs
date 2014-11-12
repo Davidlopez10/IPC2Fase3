@@ -617,6 +617,11 @@ namespace IPC2_Fase3_201314694.Paginas
           string datos = "'"+Label44.Text+"','"+Label45.Text+"','"+DropDownList15.SelectedValue+"','"+Label43.Text+"'";
           conexion.Insertar(tabla, datos);
           MultiView1.ActiveViewIndex = 0;
+      }
+
+      protected void SqlDataSource3_Updated(object sender, SqlDataSourceStatusEventArgs e)
+      {
+
       }            
     }
 }

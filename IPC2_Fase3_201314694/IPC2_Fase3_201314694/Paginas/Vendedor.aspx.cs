@@ -23,7 +23,7 @@ namespace IPC2_Fase3_201314694.Paginas
        protected void Button1_Click(object sender, EventArgs e)
        {
            Reportes reporte = new Reportes();           
-           reporte.CrearReporteVentaMetaVendedor(usuario);
+           reporte.CrearReporteVentaMetaVendedor(usuario,DropDownList1.SelectedValue);
            Response.ContentType = "application/pdf";
            Response.AddHeader("content-disposition", "attachment; filename= ReporteUsuario_" +usuario.Nombre+ ".pdf");
            System.Web.HttpContext.Current.Response.Write(reporte.retornarDocumento());

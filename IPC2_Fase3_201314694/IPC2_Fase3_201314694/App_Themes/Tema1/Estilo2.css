@@ -17,7 +17,9 @@
 text-align:center;
 }
 #Back {
-background-image: url("/Imagenes/Fondo2.jpg");
+background: url("/Imagenes/Fondo2.jpg") repeat-X scroll center top transparent;
+filter:progid:DXImageTransform.Microsoft.Gradient(endColorstr='#000000', startColorstr='#F FF F FF', gradientType='0');
+
 height:200px;
 border-radius:0px 0px  10px 10px;
 box-shadow:0px 0px 10px #000 inset;
