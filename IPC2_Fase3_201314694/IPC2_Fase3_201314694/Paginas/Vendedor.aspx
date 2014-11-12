@@ -15,14 +15,14 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex="-1">
         <asp:View ID="View1" runat="server">
-            <p>
-                <br />
+            <div id="degradado">
+                 <br />
                 <h1 style="text-align:center; font-size:30px;">REPORTES</h1>
                 <br />
                 <asp:Button ID="Button1" runat="server" Text="Reporte ventasXMetas" OnClick="Button1_Click" /><br />
                 <asp:Button ID="Button2" runat="server" Text="Reporte metasXcategoria" OnClick="Button2_Click" />
-                
-            </p>
+
+            </div>         
         </asp:View>
     </asp:MultiView>
 </asp:Content>

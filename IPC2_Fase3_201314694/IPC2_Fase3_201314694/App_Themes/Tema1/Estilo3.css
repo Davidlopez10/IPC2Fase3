@@ -35,6 +35,25 @@ font-size:20px;
 #ColumnaDer1 {
 float:right;
 width:1048px;
+height:400px;
 margin-left:1px;
 overflow:hidden;
+border-radius:0px 10px 10px 0px;
+color:white;
+text-align:center;
+}
+#degradado {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background: -moz-linear-gradient(top, #003366, #ffffff);
+    filter: Alpha(Opacity=100, FinishOpacity=0, Style=1, StartX=0, StartY=0, FinishX=0, FinishY=100%);
+    /* Para el WebKit (Safari, Google Chrome etc) */
+    background: -webkit-gradient(linear, left top, left bottom, from(#00f), to(#fff));
+    /* Para Mozilla/Gecko (Firefox etc) */
+    background: -moz-linear-gradient(top, #00ff00, #000000);
+    /* Para Internet Explorer 5.5 - 7 */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#00ff00, endColorstr=#000000, GradientType=0);
+    /* Para Internet Explorer 8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#FF0000FF, endColorstr=#FFFFFFFF)";
 }

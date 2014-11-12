@@ -88,8 +88,10 @@ namespace IPC2_Fase3_201314694
             RealizarPdf(CodigoPDF);      
         }
         /**************Reporte venta vs meta(Vendedor)********************/
-        public void CrearReporteVentaMetaVendedor(UsuarioEmpleado usr,string mes) {
+        public void CrearReporteVentaMetaVendedor(UsuarioEmpleado usr) {
             String Pdf = "";
+            DateTime today = DateTime.Today;
+            string mes = today.ToString("dd/MM/yyyy");
             decimal total = conexion.TotalMetaEmpleadoVendedor( mes,usr.Nit);
             string ordcerrada = conexion.TotalOrdenesCerradas(usr.Nit);
             const string comilla = "\"";

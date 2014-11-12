@@ -29,7 +29,7 @@
                         Nombre de usuario: <asp:Label ID="nombreUsuario" runat="server" Text=""></asp:Label>
                     </div>
                     <div style="float: left; text-align: right; width: 140px;">
-                        <asp:LinkButton ID="lkbtlogout" runat="server" OnClick="lkbtlogout_Click">Cerrar Session</asp:LinkButton>
+                        <asp:LinkButton ID="lkbtlogout" runat="server" OnClick="lkbtlogout_Click" ForeColor="#66FF33">Cerrar Session</asp:LinkButton>
                     </div>
                 </div>
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
