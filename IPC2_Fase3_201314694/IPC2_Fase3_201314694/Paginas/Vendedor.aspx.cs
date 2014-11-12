@@ -23,9 +23,9 @@ namespace IPC2_Fase3_201314694.Paginas
        protected void Button1_Click(object sender, EventArgs e)
        {
            Reportes reporte = new Reportes();           
-           reporte.CrearReporteVentaMetaVendedor(usuario,DropDownList1.SelectedValue);
+           reporte.CrearReporte_VentaMetaVendedor(usuario,DropDownList1.SelectedValue);
            Response.ContentType = "application/pdf";
-           Response.AddHeader("content-disposition", "attachment; filename= ReporteUsuario_" +usuario.Nombre+ ".pdf");
+           Response.AddHeader("content-disposition", "attachment; filename= Reporte_" + usuario.Nombre + ".pdf");
            System.Web.HttpContext.Current.Response.Write(reporte.retornarDocumento());
            Response.Flush();
            Response.End();
@@ -39,6 +39,13 @@ namespace IPC2_Fase3_201314694.Paginas
 
        protected void Button2_Click(object sender, EventArgs e)
        {
+           Reportes reporte = new Reportes();
+           reporte.CrearReporteVenta_MetaXCategoria(usuario, DropDownList2.SelectedValue);
+           Response.ContentType = "application/pdf";
+           Response.AddHeader("content-disposition", "attachment; filename= reporte_meta" + usuario.Nombre + ".pdf");
+           System.Web.HttpContext.Current.Response.Write(reporte.retornarDocumento());
+           Response.Flush();
+           Response.End();
 
        }
     }

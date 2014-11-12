@@ -88,7 +88,7 @@ namespace IPC2_Fase3_201314694
             RealizarPdf(CodigoPDF);      
         }
         /**************Reporte venta vs meta(Vendedor)********************/
-        public void CrearReporteVentaMetaVendedor(UsuarioEmpleado usr,string mes) {
+        public void CrearReporte_VentaMetaVendedor(UsuarioEmpleado usr,string mes) {
             String Pdf = "";
             string anio = today.ToString("yyyy");
             decimal total = conexion.TotalMetaEmpleadoVendedor(mes+"/"+anio,usr.Nit);//meta del mes del vendedor
@@ -117,9 +117,10 @@ namespace IPC2_Fase3_201314694
         public void CrearReporteVenta_MetaXCategoria(UsuarioEmpleado user,string mes) {
             LinkedList<string> categorias = conexion.CodigosCategorias();
             string Pdf = "";
+            string anio=today.ToString("yyyy");
             const string comilla = "\"";
-            Pdf += "<h1> REPORTE VENTA -META: </h1><br/>";
-            Pdf += "<FONT FACE= " + comilla + "courier new" + comilla + "SIZE=4 COLOR=" + comilla + "Black" + comilla + "><p> <b>  NIT VENDEDOR:  </b>" + usr.Nit + "</p><p> <b> MES A REPORTAR:  </b>" + mes + "</p><br/>";
+            Pdf += "<h1> REPORTE VENTA META X CATEGORIA: </h1><br/>";
+            Pdf += "<FONT FACE= " + comilla + "courier new" + comilla + "SIZE=4 COLOR=" + comilla + "Black" + comilla + "><p> <b> MES A REPORTAR:  </b>" + mes + "</p><br/>";
             //DATOS GENERALES DE EMPLEADO
             Pdf += "<h3><b>DATOS DE EMPLEADO:</b> </h3></br/>";
             Pdf += "<h4><b>NIT DE EMPLEADO: </b>" + user.Nit + "</h4></br>";
@@ -127,12 +128,20 @@ namespace IPC2_Fase3_201314694
             //fecha que se reporta
             Pdf += "<h3><b>FECHA </b></h3></br>";
             Pdf += "<h4><b>FECHA Y HORA: </b>" + today.ToString() + "</h4></br>";
-
-
-        
-        
-        
-        
+            foreach (string x in categorias) {
+                Pdf += "<h3><b>CATEGORIA:</b>"+x+"</h3></br>";
+                Metas met = conexion.TotalMetaMesVendedor(user.Nit,mes+"/"+anio,x);//metas del vendedor
+                Pdf += "<h2><b>CODIGO DE META_MES: </b>"+met.Id+"</h2></br>";
+                Pdf += "<h4><b> VALOR DEL MES</b>"+met.SumaTotal+"</h4></br>";
+                string ordenCerrada = conexion.TotalOrdencesCerradasXCategoria(user.Nit,mes+"/"+anio,x);//cantidad de ordenes cerradas
+                Pdf += "<h4><b> ORDENES CERRADAS </b>" + ordenCerrada + "</h4></br>";
+                string ordensPagadas = conexion.TotalOrdenesPagadasXCategoria(user.Nit, mes + "/" + anio, x);//cantidad de ordenes pagadas
+                Pdf += "<h4><b> ORDENES PAGADAS </b>" + ordensPagadas + "</h4></br>";
+                decimal porcentaje=(Convert.ToDecimal(ordensPagadas) /Convert.ToDecimal(met.SumaTotal))*100;//porcentaje
+                porcentaje = decimal.Round(porcentaje, 4);
+                Pdf += "<h4><b> Porcentaje Cumplido </b>" + porcentaje + "%</h4></br>";
+            }
+            RealizarPdf(Pdf);
         }
         
        

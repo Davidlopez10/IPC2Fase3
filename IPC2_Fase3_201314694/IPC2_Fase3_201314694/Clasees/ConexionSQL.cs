@@ -1344,6 +1344,7 @@ namespace IPC2_Fase3_201314694
             return detalleproductos;      
         } 
         /**Reporte empleados meta***/
+        //Reporte de metas de vencdedor
         public string TotalOrdenesCerradas(string nitEmpledo,string fecha) {
             string numerototal = "";            
             using (SqlConnection con = new SqlConnection(cadenaconexion))
@@ -1427,6 +1428,91 @@ namespace IPC2_Fase3_201314694
                 }
             }
             return total;
+        }
+        //reporte de metas de VEntas metsXcategoria
+        public Metas TotalMetaMesVendedor(string nit,string fecha,string categoria) {
+            Metas meta = new Metas();
+            using (SqlConnection con = new SqlConnection(cadenaconexion))
+            {
+                con.Open();
+                string consulta = "select IDMETA, SUM(VENTAMETA) from METAS inner join DETALLEMETA on METAS.IDMETA=DETALLEMETA.CODIGOMETA inner join PRODUCTO on DETALLEMETA.CODIGOPRODUC=PRODUCTO.CODIGOPRODUCTO inner join CATEGORIA on PRODUCTO.CATEGORIA=CATEGORIA.CODCATEGORIA where (CONVERT(date,METAS.FECHA,103) BETWEEN CONVERT(date,'1/"+fecha+"',103) AND CONVERT(date,'30/"+fecha+"',103)) and (METAS.CODIGOEMPELADO='"+nit+"') and CATEGORIA.CODCATEGORIA='"+categoria+"'  group by IDMETA;";
+                SqlCommand com = new SqlCommand(consulta, con);
+                try
+                {
+                    SqlDataReader leer = com.ExecuteReader();
+                    while (leer.Read())
+                    {
+                        meta.Id = leer.GetValue(0).ToString();
+                        meta.SumaTotal = leer.GetValue(1).ToString();
+                    }
+                    leer.Close();
+                }
+                catch (Exception ex)
+                {
+                    //error
+                }
+                finally
+                {
+                    con.Close();
+                }
+            }
+            return meta;      
+        }
+
+        public string TotalOrdencesCerradasXCategoria(string nit,string fecha,string categoria) {
+            string numerototal = "";
+            using (SqlConnection con = new SqlConnection(cadenaconexion))
+            {
+                con.Open();
+                string consulta = "select COUNT(ESTADOAPROBACION) from ORDEN inner join DETALLEPRODUCTOORDEN on ORDEN.CODIGOORDEN=DETALLEPRODUCTOORDEN.CODIGOORDEN inner join PRODUCTO on DETALLEPRODUCTOORDEN.CODIGOPRODUCTO=PRODUCTO.CODIGOPRODUCTO inner join CATEGORIA on PRODUCTO.CATEGORIA=CATEGORIA.CODCATEGORIA  where ESTADOAPROBACION in('Cerrada','Aprobado') and ORDEN.NITEMPLEADOVENDE='"+nit+"' and  (CONVERT(date,ORDEN.FECHACERRADA,103) BETWEEN CONVERT(date,'1/"+fecha+"',103) AND CONVERT(date,'30/"+fecha+"',103)) and CATEGORIA.CODCATEGORIA='"+categoria+"';";
+                SqlCommand com = new SqlCommand(consulta, con);
+                try
+                {
+                    SqlDataReader leer = com.ExecuteReader();
+                    while (leer.Read())
+                    {
+                        numerototal = leer.GetValue(0).ToString();
+                    }
+                    leer.Close();
+                }
+                catch (Exception ex)
+                {
+                    //error
+                }
+                finally
+                {
+                    con.Close();
+                }
+            }
+            return numerototal;             
+        }
+
+        public string TotalOrdenesPagadasXCategoria(string nit, string fecha, string categoria) {
+            string numerototal = "";
+            using (SqlConnection con = new SqlConnection(cadenaconexion))
+            {
+                con.Open();
+                string consulta = "select COUNT(ORDEN.CODIGOORDEN) from ORDEN inner join DETALLEPRODUCTOORDEN on ORDEN.CODIGOORDEN=DETALLEPRODUCTOORDEN.CODIGOORDEN inner join PRODUCTO on DETALLEPRODUCTOORDEN.CODIGOPRODUCTO=PRODUCTO.CODIGOPRODUCTO inner join CATEGORIA on PRODUCTO.CATEGORIA=CATEGORIA.CODCATEGORIA where ESTADOAPROBACION in('Cerrada','Aprobado') and ORDEN.PAGOABONO='Pagando' and ORDEN.NITEMPLEADOVENDE='"+nit+"' and  (CONVERT(date,ORDEN.FECHACERRADA,103) BETWEEN CONVERT(date,'1/"+fecha+"',103) AND CONVERT(date,'30/+"+fecha+"',103)) and CATEGORIA.CODCATEGORIA='"+categoria+"';";
+                SqlCommand com = new SqlCommand(consulta, con);
+                try
+                {
+                    SqlDataReader leer = com.ExecuteReader();
+                    while (leer.Read())
+                    {
+                        numerototal = leer.GetValue(0).ToString();
+                    }
+                    leer.Close();
+                }
+                catch (Exception ex)
+                {
+                    //error
+                }
+                finally
+                {
+                    con.Close();
+                }
+            }
+            return numerototal;          
         }
 
         /* Reporte meta*Producto **********************/
