@@ -103,12 +103,18 @@ namespace IPC2_Fase3_201314694
             Pdf += "<h4><b>NOMBRE DE EMPLEADO: </b>" + usr.Nombre + "</h4></br>";
             //FECHAS 
             Pdf += "<h3><b>FECHA </b></h3></br>";           
-            Pdf += "<h4><b>FECHA Y HORA: </b>" + today.ToString() + "</h4></br>";
+            Pdf += "<h4><b>FECHA Y HORA: </b>" + today.ToString("G") + "</h4></br>";
             Pdf += "<h4><b>META DEL MES: </b>" +Convert.ToString(total).Replace(",",".")+ "</h4></br>";
             Pdf += "<h4><b>ORDENES CERRADA: </b>" + ordcerrada + "</h4></br>";
             Pdf += "<h4><b>ORDENES PAGADAS: </b>" + OrdenesPagadas + "</h4></br>";
-            decimal porcentaje = (total / Convert.ToDecimal(OrdenesPagadas)) * 100;
-            porcentaje = decimal.Round(porcentaje, 4);
+            decimal porcentaje;
+            try {
+                porcentaje = (total / Convert.ToDecimal(OrdenesPagadas)) * 100;
+                porcentaje = decimal.Round(porcentaje, 4);
+            }catch(Exception ex){
+                porcentaje=0;
+            }
+            
             Pdf += "<h4><b>PORCENTAJES CUMPLIDOS: </b>" +porcentaje+ "</h4></br>";
             Pdf += "<h6> <i>PRODUCTOS MAGNIFICOS </i> </h6></br>";
             RealizarPdf(Pdf);
@@ -127,7 +133,7 @@ namespace IPC2_Fase3_201314694
             Pdf += "<h4><b>NOMBRE DE EMPLEADO: </b>" + user.Nombre + "</h4></br>";
             //fecha que se reporta
             Pdf += "<h3><b>FECHA </b></h3></br>";
-            Pdf += "<h4><b>FECHA Y HORA: </b>" + today.ToString() + "</h4></br>";
+            Pdf += "<h4><b>FECHA Y HORA: </b>" + today.ToString("G") + "</h4></br>";
             foreach (string x in categorias) {
                 Pdf += "<h3><b>CATEGORIA:</b>"+x+"</h3></br>";
                 Metas met = conexion.TotalMetaMesVendedor(user.Nit,mes+"/"+anio,x);//metas del vendedor
@@ -137,8 +143,16 @@ namespace IPC2_Fase3_201314694
                 Pdf += "<h4><b> ORDENES CERRADAS </b>" + ordenCerrada + "</h4></br>";
                 string ordensPagadas = conexion.TotalOrdenesPagadasXCategoria(user.Nit, mes + "/" + anio, x);//cantidad de ordenes pagadas
                 Pdf += "<h4><b> ORDENES PAGADAS </b>" + ordensPagadas + "</h4></br>";
-                decimal porcentaje=(Convert.ToDecimal(ordensPagadas) /Convert.ToDecimal(met.SumaTotal))*100;//porcentaje
-                porcentaje = decimal.Round(porcentaje, 4);
+                decimal porcentaje;
+                try
+                {
+                    porcentaje = (Convert.ToDecimal(ordensPagadas) / Convert.ToDecimal(met.SumaTotal)) * 100;//porcentaje
+                    porcentaje = decimal.Round(porcentaje, 4);
+                }
+                catch (Exception ex) {
+                    porcentaje = 0;
+                }
+                
                 Pdf += "<h4><b> Porcentaje Cumplido </b>" + porcentaje + "%</h4></br>";
             }
             RealizarPdf(Pdf);

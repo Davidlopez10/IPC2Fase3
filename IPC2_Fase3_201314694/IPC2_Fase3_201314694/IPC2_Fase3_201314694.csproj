@@ -94,6 +94,7 @@
     <Compile Include="Clasees\ConexionSQL.cs" />
     <Compile Include="Clasees\DatosCliente.cs" />
     <Compile Include="Clasees\Lista.cs" />
+    <Compile Include="Clasees\Metas.cs" />
     <Compile Include="Clasees\Moneda.cs" />
     <Compile Include="Clasees\PagoOrden.cs" />
     <Compile Include="Maestras\Anonimo.Master.cs">
