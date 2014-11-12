@@ -19,5 +19,10 @@ namespace IPC2_Fase3_201314694.Paginas
         {
             Response.Redirect("/Paginas/Ventas.aspx"); 
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

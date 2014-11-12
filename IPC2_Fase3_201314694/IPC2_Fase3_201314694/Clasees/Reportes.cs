@@ -90,7 +90,6 @@ namespace IPC2_Fase3_201314694
         /**************Reporte venta vs meta(Vendedor)********************/
         public void CrearReporteVentaMetaVendedor(UsuarioEmpleado usr) {
             String Pdf = "";
-            DateTime today = DateTime.Today;
             string mes = today.ToString("dd/MM/yyyy");
             decimal total = conexion.TotalMetaEmpleadoVendedor( mes,usr.Nit);
             string ordcerrada = conexion.TotalOrdenesCerradas(usr.Nit);
@@ -102,9 +101,8 @@ namespace IPC2_Fase3_201314694
             Pdf += "<h4><b>NIT DE EMPLEADO: </b>"+usr.Nit+"</h4></br>";
             Pdf += "<h4><b>NOMBRE DE EMPLEADO: </b>" + usr.Nombre + "</h4></br>";
             //FECHAS 
-            Pdf += "<h3><b>FECHA </b></h3></br>";
-            //DateTime today = DateTime.Today;            
-            Pdf += "<h4><b>FECHA Y HORA: </b>" + today + "</h4></br>";
+            Pdf += "<h3><b>FECHA </b></h3></br>";           
+            Pdf += "<h4><b>FECHA Y HORA: </b>" + today.ToString() + "</h4></br>";
             Pdf += "<h4><b>META DEL MES: </b>" +Convert.ToString( total).Replace(",",".")+ "</h4></br>";
             Pdf += "<h4><b>ORDENES CERRADA: </b>" + ordcerrada + "</h4></br>";
             Pdf += "<h4><b>ORDENES PAGADAS: </b>" + 0 + "</h4></br>";

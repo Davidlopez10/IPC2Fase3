@@ -239,7 +239,7 @@ namespace IPC2_Fase3_201314694.Paginas
 
                             if ((nit.Count > 0) && (mesmeta.Count > 0))
                             {
-                                string datos = "'" + mesmeta[0].InnerText + "','" + nit[0].InnerText.Trim() + "'";
+                                string datos = "'30/" + mesmeta[0].InnerText + "','" + nit[0].InnerText.Trim() + "'";
                                 string tablasme = "METAS(FECHA,CODIGOEMPELADO)";
                                 CONEXION.Insertar(tablasme, datos);
                             }
@@ -254,7 +254,7 @@ namespace IPC2_Fase3_201314694.Paginas
                                     if ((metaventa.Count > 0) && (codigoproducto.Count > 0))
                                     {
                                         string tablas = "DETALLEMETA(VENTAMETA,CODIGOPRODUC,CODIGOMETA)";
-                                        string dta = "" + metaventa[0].InnerText + ",'" + codigoproducto[0].InnerText.Trim() + "',"+CONEXION.IdMeta(mesmeta[0].InnerText,nit[0].InnerText)+"";
+                                        string dta = "" + metaventa[0].InnerText + ",'" + codigoproducto[0].InnerText.Trim() + "',"+CONEXION.IdMeta("30/"+mesmeta[0].InnerText,nit[0].InnerText)+"";
                                         //contenido.Text += metaventa[0].InnerText + codigoproducto[0].InnerText +"</br>";
                                         CONEXION.Insertar(tablas, dta);
                                         //CONEXION.ActualizarProducto(metaventa[0].InnerText, codigoproducto[0].InnerText);

@@ -14,7 +14,7 @@
         <h1 style="text-align:center; font-size:25px;">Reportes</h1>
     <br />
     <br />
-    <asp:Button ID="Button1" runat="server" Text="Reporte ventasXMetas" /><br />
+    <asp:Button ID="Button1" runat="server" Text="Reporte ventasXMetas" OnClick="Button1_Click" /><br />
     <asp:Button ID="Button2" runat="server" Text="Reporte metasXcategoria" />
     </div>
 </asp:Content>

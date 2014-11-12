@@ -25,8 +25,8 @@
             </asp:ContentPlaceHolder>
         </div>
             <div id="contenido_derecho">
-                <div style="width: 740px;">
-                    <div style="text-align: right; float: left; width: 600px">
+                <div style="width: 980px;">
+                    <div style="text-align: right; float: left; width: 840px">
                         Nombre de usuario: <asp:Label ID="nombreUsuario" runat="server" Text=""></asp:Label>
                     </div>
                     <div style="float: left; text-align: right; width: 140px;">

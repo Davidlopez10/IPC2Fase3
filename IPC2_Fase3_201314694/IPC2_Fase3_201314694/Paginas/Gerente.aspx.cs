@@ -29,12 +29,18 @@ namespace IPC2_Fase3_201314694.Paginas
 
         protected void Button3_Click(object sender, EventArgs e)
         {
-            reporte.CrearReporteMetasxClientes(DropDownList1.SelectedValue);
-            Response.ContentType = "application/pdf";
-            Response.AddHeader("content-disposition", "attachment; filename= VentaxCliente.pdf");
-            System.Web.HttpContext.Current.Response.Write(reporte.retornarDocumento());
-            Response.Flush();
-            Response.End();
+            if (DropDownList1.Text.Equals(""))
+            {
+
+            }
+            else {
+                reporte.CrearReporteMetasxClientes(DropDownList1.SelectedValue);
+                Response.ContentType = "application/pdf";
+                Response.AddHeader("content-disposition", "attachment; filename= VentaxCliente.pdf");
+                System.Web.HttpContext.Current.Response.Write(reporte.retornarDocumento());
+                Response.Flush();
+                Response.End();            
+            }            
         }
 
         protected void Button4_Click(object sender, EventArgs e)
