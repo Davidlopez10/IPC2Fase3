@@ -340,6 +340,7 @@ namespace IPC2_Fase3_201314694
                 Pdf += "<h4>NIT:</b>" + usuario.Nit + "</h4><br/>";
                 Pdf += "<h4>NOMBRE:</b>" + usuario.Nombre+ "</h4><br/>";
                 Pdf += "<h4>PUESTO:</b>" + usuario.Puesto + "</h4><br/>";
+                Pdf += "<h4>No Orden:</b>" + d + "</h4><br/>";
                 //obtengo el detalle de orden
                 Pdf += "<TABLE BORDER='0.1'>";
                 Pdf += "<TR><TD> <b>Nombre Producto</b> </TD> <TD> <b>Cantidad</b> </TD> <TD> <b>Precio Unitario($)</b></TD> <TD><b> Precio Total($)</b></TD> </TR>";

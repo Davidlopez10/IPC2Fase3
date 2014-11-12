@@ -1310,7 +1310,7 @@ namespace IPC2_Fase3_201314694
         }
 
         public LinkedList<Productos> DetalleOrden(string NoOrden) {
-            LinkedList<Productos> detalleproductos = new LinkedList<Productos> { };
+            LinkedList<Productos> detalleproductos = new LinkedList<Productos> ();
             Productos product = new Productos();
             using (SqlConnection con = new SqlConnection(cadenaconexion))
             {

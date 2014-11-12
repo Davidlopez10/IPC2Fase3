@@ -67,7 +67,7 @@
 
                     </td>
                     <td>
-                        <asp:TextBox ID="TextBox2" runat="server" TextMode="Number" AutoPostBack="true"></asp:TextBox>
+                        <asp:TextBox ID="TextBox2" runat="server" TextMode="Number"></asp:TextBox>
                     </td>
                     <td>
 
