@@ -369,7 +369,6 @@ namespace IPC2_Fase3_201314694
                     Cantidad = 0;
                 }               
             }
-
             RealizarPdf(Pdf);
         }
 
@@ -404,8 +403,7 @@ namespace IPC2_Fase3_201314694
                 cantidad = 0;
                 promedio = 0;
                 ordens = "";
-            }
-                  
+            }                  
         RealizarPdf(Pdf);  
         }
 
@@ -413,6 +411,5 @@ namespace IPC2_Fase3_201314694
         public Document retornarDocumento() {
             return Doc;
         }
-
     }
 }

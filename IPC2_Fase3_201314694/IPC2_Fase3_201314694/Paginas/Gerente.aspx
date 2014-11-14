@@ -4,25 +4,22 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
     <br />
     <br />
-
-    <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">INICIO</asp:LinkButton>
+    <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click">Ventas</asp:LinkButton><br /><br /><br />
+    <asp:LinkButton ID="LinkButton3" runat="server" OnClick="LinkButton3_Click">Reportes</asp:LinkButton>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     
         <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex="0">
-            <asp:View ID="View1" runat="server">
-                <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Ventas" />
-                <asp:Button ID="Button2" runat="server" Text="Reportes" OnClick="Button2_Click" />
-                <br />
-            </asp:View>
+            <asp:View ID="View1" runat="server"></asp:View>
             <asp:View ID="View2" runat="server">
-                <br />
+                <div id="degradado1">
+                    <br />
                 <h1 style="text-align:center; font-size:25px;">Reportes</h1>
                 <br />
                 <table>
                     <tr>
                         <td>
-                            <asp:Label ID="Label1" runat="server" Text="Nit Cliente"></asp:Label>
+                            <asp:Label ID="Label1" runat="server" Text="Nit Cliente" Font-Bold="True" Font-Size="18px"></asp:Label>
                         </td>
                     </tr>
                     <tr>
@@ -55,11 +52,57 @@
                        <td>
                          <asp:Button ID="Button4" runat="server" Text="Reporte ventasXproducto" OnClick="Button4_Click" /><br /></td>
                    </tr>
-
                </table>
-               
-                <asp:Button ID="Button5" runat="server" Text="Reporte ventasXMetas" /><br />
-                <asp:Button ID="Button6" runat="server" Text="Reporte metasXcategoria" /><br />
+                    <br />
+                    <table>
+                        <tr>
+                            <td>Mes</td>
+                            <td>Opcion</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:DropDownList ID="DropDownList2" runat="server">
+                                    <asp:ListItem>01</asp:ListItem>
+                                    <asp:ListItem>02</asp:ListItem>
+                                    <asp:ListItem>03</asp:ListItem>
+                                    <asp:ListItem>04</asp:ListItem>
+                                    <asp:ListItem>05</asp:ListItem>
+                                    <asp:ListItem>06</asp:ListItem>
+                                    <asp:ListItem>07</asp:ListItem>
+                                    <asp:ListItem>08</asp:ListItem>
+                                    <asp:ListItem>09</asp:ListItem>
+                                    <asp:ListItem>10</asp:ListItem>
+                                    <asp:ListItem>11</asp:ListItem>
+                                    <asp:ListItem>12</asp:ListItem>
+                                </asp:DropDownList>
+                            </td>
+                            <td>
+                                 <asp:Button ID="Button5" runat="server" Text="Reporte ventasXMetas" OnClick="Button5_Click" /><br />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:DropDownList ID="DropDownList3" runat="server">
+                                    <asp:ListItem>01</asp:ListItem>
+                                    <asp:ListItem>02</asp:ListItem>
+                                    <asp:ListItem>03</asp:ListItem>
+                                    <asp:ListItem>04</asp:ListItem>
+                                    <asp:ListItem>05</asp:ListItem>
+                                    <asp:ListItem>06</asp:ListItem>
+                                    <asp:ListItem>07</asp:ListItem>
+                                    <asp:ListItem>08</asp:ListItem>
+                                    <asp:ListItem>09</asp:ListItem>
+                                    <asp:ListItem>10</asp:ListItem>
+                                    <asp:ListItem>11</asp:ListItem>
+                                    <asp:ListItem>12</asp:ListItem>
+                                </asp:DropDownList>
+                            </td>
+                            <td>
+                                <asp:Button ID="Button6" runat="server" Text="Reporte metasXcategoria" OnClick="Button6_Click" /><br />
+                            </td>
+                        </tr>
+                    </table>               
+                </div>                
             </asp:View>
             <asp:View ID="View3" runat="server"></asp:View>
 

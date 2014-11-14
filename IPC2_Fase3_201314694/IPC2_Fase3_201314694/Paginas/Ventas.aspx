@@ -8,13 +8,13 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
     <br /><br />
-    <asp:LinkButton ID="LinkButton7" runat="server" OnClick="LinkButton7_Click">Inicio</asp:LinkButton><br /><br /><br />
-    <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">Crear Orden</asp:LinkButton><br /><br /><br />
-    <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click">Cerrar Orden</asp:LinkButton><br /><br /><br />
-    <asp:LinkButton ID="LinkButton4" runat="server" OnClick="LinkButton4_Click">Anular Orden</asp:LinkButton><br /><br /><br />
-    <asp:LinkButton ID="LinkButton6" runat="server" OnClick="LinkButton6_Click">Realizar Pagos</asp:LinkButton><br /><br /><br />
-    <asp:LinkButton ID="LinkButton3" runat="server" OnClick="LinkButton3_Click">Aprobar Orden</asp:LinkButton><br /><br /><br />
-    <asp:LinkButton ID="LinkButton5" runat="server" OnClick="LinkButton5_Click">Anular Venta</asp:LinkButton>
+    <asp:LinkButton ID="LinkButton7" runat="server" OnClick="LinkButton7_Click" ForeColor="Yellow">Inicio</asp:LinkButton><br /><br /><br />
+    <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click" ForeColor="Yellow">Crear Orden</asp:LinkButton><br /><br /><br />
+    <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click" ForeColor="Yellow">Cerrar Orden</asp:LinkButton><br /><br /><br />
+    <asp:LinkButton ID="LinkButton4" runat="server" OnClick="LinkButton4_Click" ForeColor="Yellow">Anular Orden</asp:LinkButton><br /><br /><br />
+    <asp:LinkButton ID="LinkButton6" runat="server" OnClick="LinkButton6_Click" ForeColor="Yellow">Realizar Pagos</asp:LinkButton><br /><br /><br />
+    <asp:LinkButton ID="LinkButton3" runat="server" OnClick="LinkButton3_Click" ForeColor="Yellow">Aprobar Orden</asp:LinkButton><br /><br /><br />
+    <asp:LinkButton ID="LinkButton5" runat="server" OnClick="LinkButton5_Click" ForeColor="Yellow">Anular Venta</asp:LinkButton>
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -276,12 +276,9 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:Label ID="Label17" runat="server" Text="APLICA MONTO MINIMO"></asp:Label>
-                    </td>
+                        &nbsp;</td>
                     <td>
-                        <asp:CheckBox ID="CheckBox1" runat="server" Text="SI" />
-                        <asp:CheckBox ID="CheckBox2" runat="server"  Text="NO"/>
-                    </td>
+                        &nbsp;</td>
                       <td> <asp:Label ID="Label31" runat="server" Text=""></asp:Label>           </td>
                 </tr>
             </table>

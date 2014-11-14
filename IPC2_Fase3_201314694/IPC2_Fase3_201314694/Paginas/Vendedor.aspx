@@ -6,10 +6,10 @@
      <br />
     </p>
     <p>
-        <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">VENTAS</asp:LinkButton>
+        <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click" Font-Bold="True" ForeColor="#0099FF">VENTAS</asp:LinkButton>
     </p>
     <p>
-        <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click">REPORTES</asp:LinkButton>
+        <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click" Font-Bold="True" ForeColor="#0099FF">REPORTES</asp:LinkButton>
     </p>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -17,9 +17,13 @@
         <asp:View ID="View1" runat="server">
             <div id="degradado">
                  <br />
-                <h1 style="text-align:center; font-size:30px;">REPORTES</h1>
+                <h1 style="text-align:center; font-size:30px; color:aquamarine;">REPORTES</h1>
                 <br />
                 <table>
+                    <tr>
+                        <td>Mes</td>
+                        <td>Opcion</td>
+                    </tr>
                     <tr>
                         <td>
                             <asp:DropDownList ID="DropDownList1" runat="server">

@@ -4,11 +4,11 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
     <br />
     <br />
-    <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click" Font-Names="OCR A Extended" Font-Size="25px">Inicio</asp:LinkButton>
+    <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click" Font-Names="OCR A Extended" Font-Size="25px" ForeColor="#33CCFF">Inicio</asp:LinkButton>
     <br />
     <br />
     <br />
-    <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click" Font-Names="OCR A Extended" Font-Size="25px">PAGAR</asp:LinkButton>
+    <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click" Font-Names="OCR A Extended" Font-Size="25px" ForeColor="#33CCFF">PAGAR</asp:LinkButton>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 

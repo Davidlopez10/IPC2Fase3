@@ -1,58 +1,63 @@
 ﻿#body {
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
     color: #808080;
-    font-size:12px;
-    line-height:12px;
-    font-family:'Adobe Gothic Std';
-    background-color:#fff;
-    background-position:center top;
-    background-repeat:no-repeat;
+    font-size: 12px;
+    line-height: 12px;
+    font-family: 'Adobe Gothic Std';
+    background-color: #fff;
+    background-position: center top;
+    background-repeat: no-repeat;
 }
 #h2 {
-text-align:center
+    text-align: center;
 }
 a:hover {
 
 }
 #abrigo_general {
-width:1250px;
-margin:0 auto;
+    width: 1250px;
+    margin: 0 auto;
 }
 #content_login {
-margin-top:150px;
-overflow:hidden;
-width:720px;
-position:relative;
-padding-bottom:10px;
+    margin-top: 150px;
+    overflow: hidden;
+    width: 720px;
+    position: relative;
+    padding-bottom: 10px;
 }
 #banner {
-background: url("/Imagenes/Fondo5.jpeg");
-width:1250px;
-height:200px;
-color:white;
-border-radius:0px 0px  10px 10px;
-box-shadow:0px 0px 10px #000 inset;
+    background: url("/Imagenes/Fondo5.jpeg");
+    width: 1250px;
+    height: 200px;
+    color: white;
+    border-radius: 0px 0px 10px 10px;
+    box-shadow: 0px 0px 10px #000 inset;
 }
 #contenido_izquierdo {
-float:left;
-width:250px;
-height:400px;
-overflow:scroll;
-text-align:center;
-margin-left:1px;
+    float: left;
+    width: 250px;
+    height: 400px;
+    /*overflow: scroll;*/
+    text-align: center;
+    margin-left: 1px;
+    background: -webkit-linear-gradient(black, aqua); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(black, aqua); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(black, aqua); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(black, aqua); /* Standard syntax (must be last) */
+    border-radius:10px 0px 0px 10px;
 }
 #contenido_derecho {
     float: right;
     width: 999px;
     height: 400px;
-    overflow: scroll;
+    /*overflow: scroll;*/
     margin-left: 0px;
     height: 400px;
-    background: -webkit-linear-gradient(yellow, green); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(yellow, green); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(yellow,green); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(yellow, green); /* Standard syntax (must be last) */
+    background: -webkit-linear-gradient(black, aqua); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(black, aqua); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(black, aqua); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(black, aqua); /* Standard syntax (must be last) */
     text-align:center;
     border-radius:0px 10px  10px 0px;
 }

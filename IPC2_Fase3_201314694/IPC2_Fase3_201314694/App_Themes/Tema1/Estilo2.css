@@ -1,41 +1,54 @@
 ﻿body {
-     margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
     color: #808080;
-    font-size:12px;
-    line-height:12px;
-    font-family:'Adobe Gothic Std';
-    background-color:#fff;
-    background-position:center top;
-    background-repeat:no-repeat;
+    font-size: 12px;
+    line-height: 12px;
+    font-family: 'Adobe Gothic Std';
+    background-color: #fff;
+    background-position: center top;
+    background-repeat: no-repeat;
 }
 #General {
-    width:1200px;
-    margin:0 auto;
+    width: 1200px;
+    margin: 0 auto;
 }
 #h2 {
-text-align:center;
+    text-align: center;
 }
 #Back {
-background: url("/Imagenes/Fondo2.jpg") repeat-X scroll center top transparent;
-filter:progid:DXImageTransform.Microsoft.Gradient(endColorstr='#000000', startColorstr='#F FF F FF', gradientType='0');
-
-height:200px;
-border-radius:0px 0px  10px 10px;
-box-shadow:0px 0px 10px #000 inset;
+    background: url("/Imagenes/Fondo2.jpg") repeat-X scroll center top transparent;
+    filter: progid:DXImageTransform.Microsoft.Gradient(endColorstr='#000000', startColorstr='#F FF F FF', gradientType='0');
+    height: 150px;
+    border-radius: 0px 0px 10px 10px;
+    box-shadow: 0px 0px 100px #45974e inset;
+    text-align: center;
+    color: black;
+    font-size: 20px;
 }
 #colum_izquierda {
-float:left;
-width:198px;
-height:400px;
-text-align:center;
-margin-left:1px;
-overflow:hidden;
-font-size:20px;
+    float: left;
+    width: 200px;
+    height: 400px;
+    text-align: center;
+    margin-left: 1px;
+    overflow: hidden;
+    font-size: 20px;
+    box-shadow: 0px 0px 400px green inset;
+    border-radius: 10px 0px 0px 10px;
 }
 #colum_derecha {
-    float:right;
-    width:998px;
-    height:400px;
-    margin-left:1px;
+    float: right;
+    width: 999px;
+    height: 400px;
+    background: -webkit-linear-gradient(left top, green, white); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, green, white); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, green, white); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right, green, white); /* Standard syntax (must be last) */
+    color: black;
+    border-radius: 0px 10px 10px 0px;
+    box-shadow: 0px 0px 5px #207116 inset;
+}
+#degradado1 {
+    margin-left: 20px;
 }

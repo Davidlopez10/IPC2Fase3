@@ -15,8 +15,8 @@
     <div id="General2">
         <div id="Back3">
             <br />
-            <h1 style="margin-left:5px;">Productos Maginificos</h1>
-            <h2 style="margin-left:10px;">Vendedor</h2>
+            <h1 >Productos Maginificos</h1>
+            <h2 >Vendedor</h2>
         </div>
         <div id="ColumnaIzq1">
         <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
@@ -24,12 +24,12 @@
         </asp:ContentPlaceHolder>
         </div>
         <div id="ColumnaDer1">
-            <div style="width: 1046px;">
+            <div style="width: 1045px;">
                     <div style="text-align: right; float: left; width: 900px">
                         Nombre de usuario: <asp:Label ID="nombreUsuario" runat="server" Text=""></asp:Label>
                     </div>
                     <div style="float: left; text-align: right; width: 120px;">
-                        <asp:LinkButton ID="lkbtlogout" runat="server" OnClick="lkbtlogout_Click">Cerrar Session</asp:LinkButton>
+                        <asp:LinkButton ID="lkbtlogout" runat="server" OnClick="lkbtlogout_Click" ForeColor="#9999FF">Cerrar Session</asp:LinkButton>
                     </div>
                 </div>
            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">

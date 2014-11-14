@@ -5,10 +5,10 @@
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h1 style="text-align:center">Cargar Archivo</h1>
+    <h1 style="text-align:center; color:white">Cargar Archivo</h1>
     <div >
         <asp:Label ID="Label1" runat="server" Text="" Visible="false" ForeColor="Red"></asp:Label><br /><br />
-        <asp:FileUpload ID="cargarArchivo" runat="server" BorderStyle="Inset" Font-Names="Broadway" Font-Size="20px" ForeColor="Black"/><br /><br />
+        <asp:FileUpload ID="cargarArchivo" runat="server" BorderStyle="Inset" Font-Names="Broadway" Font-Size="20px" ForeColor="#66ccff"/><br /><br />
         <asp:ImageButton ID="ImageButton1" runat="server" Height="80px" ImageUrl="~/Imagenes/subir-archivos-Hotmail.jpg" OnClick="ImageButton1_Click" Width="100px" ImageAlign="Baseline"/>
     </div>
 </asp:Content>
