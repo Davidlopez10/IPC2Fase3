@@ -35,5 +35,12 @@ namespace IPC2_Fase3_201314694.Clasees
             get { return ValorPago; }
             set { ValorPago = value; }
         }
+        private string TipoPago = "";
+
+        public string TipoPago1
+        {
+            get { return TipoPago; }
+            set { TipoPago = value; }
+        }
     }
 }

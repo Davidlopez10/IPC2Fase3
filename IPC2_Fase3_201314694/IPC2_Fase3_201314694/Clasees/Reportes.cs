@@ -260,7 +260,7 @@ namespace IPC2_Fase3_201314694
             Pdf += "<h4><b>MONTO: </b>"+pago+"</h4></br>";
             //obtengo el detalle de orden
             Pdf += "<TABLE BORDER='0.1'>";
-            Pdf += "<TR><TD> <b>CodigoOrden</b></TD> <TD> <b>Moneda de Pago</b> </TD> <TD> <b>Tasa de Cambio</b></TD> <TD><b> Monto($)</b></TD> </TR>";
+            Pdf += "<TR><TD> <b>Codigo Orden</b></TD> <TD> <b>Moneda de Pago</b> </TD> <TD> <b>Tasa de Cambio</b></TD> <TD><b> Monto($)</b></TD> </TR>";
             foreach (PagoOrden d in pagos)
             {
                 Pdf += "<TR><TD>" + d.NoOrden1 + "</TD><TD>" + d.MonedaPago1 + "</TD><TD>" + d.Monedavalor1 + "</TD><TD>" + d.ValorPago1 + "</TD></TR>";
@@ -281,7 +281,7 @@ namespace IPC2_Fase3_201314694
             Pdf += "<h2>DETALLE DE PAGO</b></h2><br/>";
             //obtengo el detalle de orden
             Pdf += "<TABLE BORDER='0.1'>";
-            Pdf += "<TR><TD> <b>CodigoOrden</b></TD> <TD> <b>Moneda de Pago</b> </TD> <TD> <b>Tasa de Cambio</b></TD> <TD><b> Monto($)</b></TD> </TR>";
+            Pdf += "<TR><TD> <b>Codigo Orden</b></TD> <TD> <b>Moneda de Pago</b> </TD> <TD> <b>Tasa de Cambio</b></TD> <TD><b> Monto($)</b></TD> </TR>";
             foreach (PagoOrden d in pagos)
             {
              Pdf += "<TR><TD>" + d.NoOrden1 + "</TD><TD>" + d.MonedaPago1 + "</TD><TD>" + d.Monedavalor1 + "</TD><TD>" + d.ValorPago1 + "</TD></TR>";
@@ -333,7 +333,38 @@ namespace IPC2_Fase3_201314694
                     Pdf += "</TABLE><br/>";
                     Pdf += "<h4>Total($) :</b>" + sumas + "</h4><br/><br/><br/>";
                     sumas = 0;                
-                }              
+                }
+                LinkedList<PagoOrden> pagos = conexion.NumeroPagosOrden(d);
+                if (pagos.Count > 0) {
+
+                    Pdf += "<h2>Detalle de pago</b></h2><br/>";
+                    Pdf += "<TABLE BORDER='0.1'>";
+                    Pdf += "<TR><TD> <b>CodigoOrden</b></TD> <TD> <b>Moneda de Pago</b> </TD> <TD> <b>Tasa de Cambio</b></TD> <TD><b> Monto($)</b></TD> </TR>";
+                    decimal suma = 0;
+                    foreach (PagoOrden h in pagos)
+                    {
+                        Pdf += "<TR><TD>" + h.NoOrden1 + "</TD><TD>" + h.MonedaPago1 + "</TD><TD>" + h.Monedavalor1 + "</TD><TD>" + h.ValorPago1 + "</TD></TR>";
+                        suma = suma + Convert.ToDecimal(h.ValorPago1);    
+                    }
+                    Pdf += "</TABLE><br/>";
+                    Pdf += "<h2>Sumatoria </b>" + suma + "</h2><br/>";
+                }
+            }
+            LinkedList<PagoOrden> PagoAnulado = conexion.NumerosOrdenAnuladosPagos();
+            if (PagoAnulado.Count > 0)
+            {
+
+                Pdf += "<h2>Detalle de pago Anulado</b></h2><br/>";
+                Pdf += "<TABLE BORDER='0.1'>";
+                Pdf += "<TR><TD> <b>CodigoOrden</b></TD> <TD> <b>Valor de Pago</b> </TD> <TD> <b>Tipo de pago</b></TD> </TR>";
+                decimal suma = 0;
+                foreach (PagoOrden h in PagoAnulado)
+                {
+                    Pdf += "<TR><TD>" + h.NoOrden1 + "</TD><TD>" + h.MonedaPago1 + "</TD><TD>" + h.TipoPago1 + "</TD></TR>";
+                    suma = suma + Convert.ToDecimal(h.MonedaPago1);
+                }
+                Pdf += "</TABLE><br/>";
+                Pdf += "<h2>Sumatoria </b>" + suma + "</h2><br/>";
             }
             RealizarPdf(Pdf);
         }
@@ -386,23 +417,26 @@ namespace IPC2_Fase3_201314694
             decimal promedio=0;
             foreach (string d in categorias) {
                 LinkedList<Productos> productos = conexion.DetalleVentasCategoria(d);
-                Pdf += "<h3>Codigo de Categoria:</b>"+d+"</h3><br/>";
-                Pdf += "<TABLE BORDER='0.1'>";
-                Pdf += "<TR><TD> <b>Producto</b></TD> <TD> <b>Cantidad </b> </TD> <TD><b>Total($) </b></TD></TR>";
-                foreach (Productos h in productos) {
-                    Pdf += "<TR><TD>" + h.Nombre + "</TD><TD>" +h.Cantidad1+ "</TD><TD>" +h.PrecioTotal1+ "</TD></TR>";
-                    cantidad = cantidad = Convert.ToDecimal(h.Cantidad1);
-                    promedio = promedio + Convert.ToDecimal(h.PrecioTotal1);
-                }
-                Pdf += "</TABLE><br/>"; 
-                ordens=conexion.TotalDeOrdenesCategoria(d);
-                Pdf += "<h4>Cantidad Total</b>"+cantidad+"</h4><br/>";
-                Pdf += "<h4>Cantidad Ordenes</b>"+ordens+"</h4><br/>";
-                Pdf += "<h4>Promedio de Ordenes</b>"+Convert.ToInt32(ordens)/2+"</h4><br/>";
-                Pdf += "<h4>Promedio($)</b>" + promedio/2 + "</h4><br/>";
-                cantidad = 0;
-                promedio = 0;
-                ordens = "";
+                if (productos.Count > 0) {
+                    Pdf += "<h3>Codigo de Categoria:</b>" + d + "</h3><br/>";
+                    Pdf += "<TABLE BORDER='0.1'>";
+                    Pdf += "<TR><TD> <b>Producto</b></TD> <TD> <b>Cantidad </b> </TD> <TD><b>Total($) </b></TD></TR>";
+                    foreach (Productos h in productos)
+                    {
+                        Pdf += "<TR><TD>" + h.Nombre + "</TD><TD>" + h.Cantidad1 + "</TD><TD>" + h.PrecioTotal1 + "</TD></TR>";
+                        cantidad = cantidad = Convert.ToDecimal(h.Cantidad1);
+                        promedio = promedio + Convert.ToDecimal(h.PrecioTotal1);
+                    }
+                    Pdf += "</TABLE><br/>";
+                    ordens = conexion.TotalDeOrdenesCategoria(d);
+                    Pdf += "<h4>Cantidad Total</b>" + cantidad + "</h4><br/>";
+                    Pdf += "<h4>Cantidad Ordenes</b>" + ordens + "</h4><br/>";
+                    Pdf += "<h4>Promedio de Ordenes</b>" + Convert.ToInt32(ordens) / 2 + "</h4><br/>";
+                    Pdf += "<h4>Promedio($)</b>" + promedio / 2 + "</h4><br/>";
+                    cantidad = 0;
+                    promedio = 0;
+                    ordens = "";                
+                }                
             }                  
         RealizarPdf(Pdf);  
         }

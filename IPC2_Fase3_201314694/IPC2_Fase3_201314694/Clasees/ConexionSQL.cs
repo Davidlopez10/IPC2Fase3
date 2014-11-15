@@ -1736,6 +1736,39 @@ namespace IPC2_Fase3_201314694
             return pago;       
         }
 
+        public LinkedList<PagoOrden> NumerosOrdenAnuladosPagos() {
+            LinkedList<PagoOrden> pago = new LinkedList<PagoOrden>();
+
+            string consulta = "select CODIGOORDEN,PAGO.VALORPAGO,pago.TIPO from ORDEN inner join PAGO on ORDEN.CODIGOORDEN=PAGO.NOORDEN where ORDEN.ESTADOAPROBACION='ANULADO' and ORDEN.PAGOABONO='ANULADO';";
+            using (SqlConnection conexion = new SqlConnection(cadenaconexion))
+            {
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand(consulta, conexion);
+                try
+                {
+                    SqlDataReader read = cmd.ExecuteReader();
+                    while (read.Read())
+                    {
+                        PagoOrden pag = new PagoOrden();
+                        pag.NoOrden1 = read.GetValue(0).ToString();
+                        pag.MonedaPago1 = read.GetValue(1).ToString();
+                        pag.TipoPago1 = read.GetValue(2).ToString();
+                        pago.AddFirst(pag);
+                    }
+                    read.Close();
+                }
+                catch (Exception ex)
+                {
+                    // saldo = "eRROR";
+                }
+                finally
+                {
+                    conexion.Close();
+                }
+            }
+            return pago;               
+        }
+
         /*****************************Anular Venta*******************************************/
 
         public LinkedList<string> AnulacionVentaOrdenConPago() {
