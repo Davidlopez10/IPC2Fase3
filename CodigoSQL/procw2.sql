@@ -136,3 +136,9 @@ select COUNT(ORDEN.CODIGOORDEN) from ORDEN inner join DETALLEPRODUCTOORDEN on OR
 
 
 
+
+
+
+
+
+

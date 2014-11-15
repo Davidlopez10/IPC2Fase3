@@ -226,6 +226,10 @@ namespace IPC2_Fase3_201314694.Paginas
                         tabla = "PAGO(CODIGOPAGO,TIPOMONEDA,TIPO,VALORPAGO,NOORDEN)";
                         datos = "" + TextBox7.Text + ",'" + DropDownList3.SelectedValue + "','Efectivo'," + Convert.ToString(pagos).Replace(",", ".") + ",'" + DropDownList1.SelectedValue + "'";
                         conexion.Insertar(tabla, datos);
+                        //insertar efectivo
+                        tabla = "EFECTIVO(CDPAGO)";
+                        datos = ""+TextBox7.Text;
+                        conexion.Insertar(tabla, datos);
                         //actualizacion de datos
                         decimal total = saldo - pagos;
                         conexion.ActualizarSaldoOrden(DropDownList1.SelectedValue, Convert.ToString(total));//actualizo el nuevo saldo
@@ -270,14 +274,16 @@ namespace IPC2_Fase3_201314694.Paginas
                 Label17.Text = "Ingrese El codigo del Recibo";
             }
             else {
-                Label17.Visible = false;                
+
+                Label17.Visible = false;
+                MultiView1.ActiveViewIndex = 0;
                 reporte.CrearReciboPago(Label13.Text,TextBox8.Text);
                 Response.ContentType = "application/pdf";
                 Response.AddHeader("content-disposition", "attachment; filename= ReciboCDPago_" +TextBox7.Text + ".pdf");
                 System.Web.HttpContext.Current.Response.Write(reporte.retornarDocumento());
                 Response.Flush();
                 Response.End();
-                MultiView1.ActiveViewIndex = 0;
+                
             }          
         }
 
